@@ -13,12 +13,7 @@
 
   <title>FLIP</title>
 
-
   <style>
-
-    /* ================================================= */
-    /* BASIC PAGE                                        */
-    /* ================================================= */
 
     * {
       box-sizing: border-box;
@@ -28,15 +23,11 @@
     body {
       margin: 0;
       padding: 0;
-
       min-height: 100%;
-
       overscroll-behavior: none;
     }
 
-
     body {
-
       min-height: 100vh;
 
       font-family:
@@ -48,11 +39,9 @@
         sans-serif;
 
       color: white;
-
       text-align: center;
 
       background:
-
         radial-gradient(
           ellipse at center,
           #242424 0%,
@@ -61,70 +50,38 @@
         );
 
       user-select: none;
-
       -webkit-user-select: none;
-
       touch-action: manipulation;
-
     }
 
-
     #game {
-
       width: 100%;
-
       max-width: 1080px;
-
       margin: auto;
 
       padding:
-
         max(10px, env(safe-area-inset-top))
-
         8px
-
         max(20px, env(safe-area-inset-bottom));
-
     }
 
-
-
-    /* ================================================= */
-    /* TITLE                                             */
-    /* ================================================= */
-
     #title {
-
       margin: 2px 0 4px;
 
       font-size: 43px;
-
       font-weight: 800;
-
       letter-spacing: 10px;
 
       text-shadow:
-
         0 3px 3px rgba(0,0,0,.8),
-
         0 0 15px rgba(255,255,255,.08);
-
     }
 
-
-
-    /* ================================================= */
-    /* STATS                                             */
-    /* ================================================= */
-
     #stats {
-
       display: flex;
-
       justify-content: center;
 
       gap: 25px;
-
       flex-wrap: wrap;
 
       margin-bottom: 3px;
@@ -132,52 +89,34 @@
       font-size: 14px;
 
       color: rgba(255,255,255,.8);
-
     }
 
-
     #stats strong {
-
       margin-left: 3px;
 
       font-size: 16px;
 
       color: white;
-
     }
 
-
-
-    /* ================================================= */
-    /* MESSAGE                                           */
-    /* ================================================= */
-
     #message {
-
       height: 27px;
 
       margin-top: 3px;
 
       font-size: 15px;
-
       font-weight: 650;
 
       display: flex;
-
       align-items: center;
-
       justify-content: center;
-
     }
 
-
-
-    /* ================================================= */
-    /* OUTER POKER TABLE                                 */
-    /* ================================================= */
+    /* ===================================== */
+    /* TABLE                                 */
+    /* ===================================== */
 
     #tableOuter {
-
       margin: 7px auto 0;
 
       padding: 13px;
@@ -185,7 +124,6 @@
       border-radius: 80px;
 
       background:
-
         linear-gradient(
           160deg,
           #75482b 0%,
@@ -197,25 +135,17 @@
       border: 3px solid #120905;
 
       box-shadow:
-
         inset 0 4px 5px rgba(255,255,255,.14),
-
         inset 0 -10px 15px rgba(0,0,0,.75),
-
         0 15px 30px rgba(0,0,0,.65);
-
     }
 
-
-
     #tableRail {
-
       padding: 10px;
 
       border-radius: 66px;
 
       background:
-
         linear-gradient(
           180deg,
           #242424,
@@ -224,21 +154,11 @@
         );
 
       box-shadow:
-
         inset 0 4px 7px rgba(255,255,255,.07),
-
         inset 0 -6px 10px rgba(0,0,0,.8);
-
     }
 
-
-
-    /* ================================================= */
-    /* FELT                                              */
-    /* ================================================= */
-
     #tableFelt {
-
       position: relative;
 
       height: 490px;
@@ -250,7 +170,6 @@
       background-color: #075e37;
 
       background-image:
-
         radial-gradient(
           ellipse at 50% 35%,
           rgba(25,160,92,.45),
@@ -267,80 +186,53 @@
         );
 
       box-shadow:
-
         inset 0 0 65px rgba(0,0,0,.42),
-
         inset 0 0 8px rgba(0,0,0,.7);
-
     }
 
-
     #tableFelt::before {
-
       content: "";
 
       position: absolute;
-
       inset: 17px;
 
       border:
-
         1px solid
-
         rgba(255,255,255,.13);
 
       border-radius: 42px;
 
       pointer-events: none;
-
     }
 
-
-
-    /* ================================================= */
-    /* SMALL FLIP LOGO ON FELT                           */
-    /* ================================================= */
-
     #feltLogo {
-
       position: absolute;
 
       left: 50%;
-
       top: 51%;
 
       transform:
-
         translate(-50%, -50%);
 
       font-size: 50px;
-
       letter-spacing: 15px;
-
       font-weight: 800;
 
       color:
-
         rgba(255,255,255,.035);
 
       pointer-events: none;
-
     }
 
-
-
-    /* ================================================= */
-    /* HAND AREA                                         */
-    /* ================================================= */
+    /* ===================================== */
+    /* HAND                                  */
+    /* ===================================== */
 
     #handArea {
-
       position: absolute;
 
       left: 22px;
-
       right: 22px;
-
       top: 15px;
 
       height: 275px;
@@ -348,38 +240,27 @@
       overflow: hidden;
 
       touch-action: none;
-
     }
 
-
     #playArea {
-
       position: relative;
 
       width: 100%;
-
       height: 260px;
-
     }
 
-
-
-    /* ================================================= */
-    /* PLAYING CARDS                                     */
-    /* ================================================= */
+    /* ===================================== */
+    /* CARDS                                 */
+    /* ===================================== */
 
     .playingCard {
-
       position: absolute;
 
       width: 74px;
-
       height: 108px;
 
       border:
-
         1px solid
-
         rgba(80,80,80,.65);
 
       border-radius: 8px;
@@ -391,7 +272,6 @@
       color: #101010;
 
       background:
-
         linear-gradient(
           135deg,
           #ffffff 0%,
@@ -400,71 +280,44 @@
         );
 
       box-shadow:
-
         0 4px 9px rgba(0,0,0,.48),
-
         inset 0 0 2px rgba(0,0,0,.15);
 
       transform:
-
         translateY(var(--lift, 0px))
-
         rotate(var(--rotation, 0deg));
 
       transform-origin:
-
         bottom center;
 
       transition:
-
         left .25s ease,
-
         top .25s ease,
-
         transform .18s ease,
-
         box-shadow .18s ease,
-
         opacity .25s ease;
 
       z-index: 10;
 
       touch-action: none;
-
     }
-
 
     .playingCard.red {
-
       color: #c51f2c;
-
     }
 
-
     .playingCard.selected {
-
       --lift: -31px;
 
       box-shadow:
-
         0 0 0 4px #f0c63c,
-
         0 13px 20px rgba(0,0,0,.55);
-
     }
 
-
-
-    /* ================================================= */
-    /* CARD CORNERS                                      */
-    /* ================================================= */
-
     .cardCorner {
-
       position: absolute;
 
       top: 5px;
-
       left: 5px;
 
       width: 24px;
@@ -472,28 +325,19 @@
       line-height: .82;
 
       font-family:
-
         Georgia,
-
         "Times New Roman",
-
         serif;
 
       display: flex;
-
       flex-direction: column;
-
       align-items: center;
-
     }
 
-
     .bottomCorner {
-
       position: absolute;
 
       right: 5px;
-
       bottom: 5px;
 
       width: 24px;
@@ -501,80 +345,54 @@
       line-height: .82;
 
       font-family:
-
         Georgia,
-
         "Times New Roman",
-
         serif;
 
       display: flex;
-
       flex-direction: column;
-
       align-items: center;
 
       transform: rotate(180deg);
-
     }
-
 
     .cardRank {
-
       font-size: 20px;
-
       font-weight: bold;
-
     }
-
 
     .cardSuit {
-
       margin-top: 5px;
-
       font-size: 17px;
-
     }
 
-
     .centerSuit {
-
       position: absolute;
 
       left: 50%;
-
       top: 55%;
 
       transform:
-
         translate(-50%, -50%);
 
       font-size: 34px;
 
       font-family:
-
         Georgia,
-
         "Times New Roman",
-
         serif;
 
       opacity: .88;
-
     }
 
-
-
-    /* ================================================= */
-    /* CARD DEAL ANIMATION                               */
-    /* ================================================= */
+    /* ===================================== */
+    /* DEAL ANIMATION                        */
+    /* ===================================== */
 
     .dealCard {
-
       position: absolute;
 
       width: 74px;
-
       height: 108px;
 
       border-radius: 8px;
@@ -586,7 +404,6 @@
       pointer-events: none;
 
       background:
-
         repeating-linear-gradient(
           45deg,
           rgba(255,255,255,.17) 0px,
@@ -606,57 +423,39 @@
         #193f8f;
 
       box-shadow:
-
         0 7px 15px rgba(0,0,0,.55);
 
       transition:
-
         left .32s ease,
-
         top .32s ease,
-
         transform .32s ease,
-
         opacity .18s ease;
-
     }
 
-
-
-    /* ================================================= */
-    /* DISCARD ANIMATION                                 */
-    /* ================================================= */
+    /* ===================================== */
+    /* DISCARD ANIMATION                     */
+    /* ===================================== */
 
     .discarding {
-
       opacity: 0;
 
       transform:
-
         translateY(190px)
-
         rotate(18deg)
-
         scale(.65) !important;
-
     }
 
-
-
-    /* ================================================= */
-    /* BURIED CARDS                                      */
-    /* ================================================= */
+    /* ===================================== */
+    /* BURIED STACK                          */
+    /* ===================================== */
 
     #buriedStack {
-
       position: absolute;
 
       left: 11px;
-
       top: 122px;
 
       width: 85px;
-
       height: 115px;
 
       display: none;
@@ -664,16 +463,12 @@
       z-index: 500;
 
       cursor: pointer;
-
     }
 
-
     .buriedCard {
-
       position: absolute;
 
       width: 70px;
-
       height: 103px;
 
       border-radius: 7px;
@@ -683,49 +478,34 @@
       background: white;
 
       box-shadow:
-
         0 3px 7px rgba(0,0,0,.45);
-
     }
-
 
     .buriedCard:nth-child(1) {
-
       left: 0;
-
       top: 7px;
-
+      transform: rotate(-7deg);
     }
-
 
     .buriedCard:nth-child(2) {
-
       left: 4px;
-
       top: 4px;
-
+      transform: rotate(4deg);
     }
-
 
     .buriedCard:nth-child(3) {
-
       left: 8px;
-
       top: 1px;
-
+      transform: rotate(-2deg);
     }
 
-
     #buriedCount {
-
       position: absolute;
 
       right: -2px;
-
       top: -7px;
 
       min-width: 29px;
-
       height: 29px;
 
       padding: 5px 6px;
@@ -737,24 +517,18 @@
       color: #181307;
 
       font-weight: bold;
-
       font-size: 13px;
 
       z-index: 20;
 
       box-shadow:
-
         0 3px 6px rgba(0,0,0,.4);
-
     }
 
-
     #buriedLabel {
-
       position: absolute;
 
       top: 115px;
-
       left: -3px;
 
       width: 90px;
@@ -762,27 +536,20 @@
       font-size: 10px;
 
       color:
-
         rgba(255,255,255,.82);
-
     }
 
-
-
-    /* ================================================= */
-    /* DECK                                              */
-    /* ================================================= */
+    /* ===================================== */
+    /* DECK                                  */
+    /* ===================================== */
 
     #deckArea {
-
       position: absolute;
 
       left: 50%;
-
       bottom: 25px;
 
       transform:
-
         translateX(-50%);
 
       width: 105px;
@@ -790,44 +557,30 @@
       z-index: 50;
 
       cursor: pointer;
-
     }
 
-
     #deck {
-
       position: relative;
 
       width: 78px;
-
       height: 111px;
 
       margin: auto;
 
       transition:
-
         transform .1s ease;
-
     }
-
 
     #deckArea:active #deck {
-
       transform:
-
         translateY(3px)
-
         scale(.98);
-
     }
 
-
     .deckLayer {
-
       position: absolute;
 
       width: 74px;
-
       height: 107px;
 
       border-radius: 8px;
@@ -835,38 +588,25 @@
       border: 1px solid #ddd;
 
       background: white;
-
     }
-
 
     .deckLayer.one {
-
       left: -6px;
-
       top: 6px;
-
     }
-
 
     .deckLayer.two {
-
       left: -3px;
-
       top: 3px;
-
     }
 
-
     #deckBack {
-
       position: absolute;
 
       left: 0;
-
       top: 0;
 
       width: 74px;
-
       height: 107px;
 
       border-radius: 8px;
@@ -874,7 +614,6 @@
       border: 5px solid white;
 
       background:
-
         repeating-linear-gradient(
           45deg,
           rgba(255,255,255,.18) 0px,
@@ -894,14 +633,10 @@
         #193f8f;
 
       box-shadow:
-
         0 7px 12px rgba(0,0,0,.55);
-
     }
 
-
     #deckBack::after {
-
       content: "";
 
       position: absolute;
@@ -909,101 +644,71 @@
       inset: 6px;
 
       border:
-
         2px solid
-
         rgba(255,255,255,.72);
 
       border-radius: 3px;
-
     }
 
-
     #deckCount {
-
       margin-top: 7px;
 
       font-size: 12px;
-
       font-weight: bold;
-
     }
 
-
     #tapDeck {
-
       margin-top: 2px;
 
       font-size: 10px;
 
       opacity: .75;
-
     }
 
-
     #deckArea.empty {
-
       opacity: .28;
 
       cursor: default;
-
     }
 
-
-
-    /* ================================================= */
-    /* DISCARD PILE                                      */
-    /* ================================================= */
+    /* ===================================== */
+    /* DISCARD PILE                          */
+    /* ===================================== */
 
     #discardArea {
-
       position: absolute;
 
       right: 52px;
-
       bottom: 32px;
 
       width: 92px;
-
       height: 132px;
 
       z-index: 45;
-
     }
 
-
     #discardPile {
-
       position: relative;
 
       width: 70px;
-
       height: 102px;
 
       margin: auto;
-
     }
 
-
     .discardPlaceholder {
-
       position: absolute;
 
       inset: 0;
 
       border:
-
         2px dashed
-
         rgba(255,255,255,.22);
 
       border-radius: 7px;
-
     }
 
-
     #discardVisual {
-
       position: absolute;
 
       inset: 0;
@@ -1011,7 +716,63 @@
       display: none;
 
       background:
+        linear-gradient(
+          135deg,
+          #fff,
+          #eeeeee
+        );
 
+      border:
+        1px solid #aaa;
+
+      border-radius: 7px;
+
+      box-shadow:
+        0 4px 7px rgba(0,0,0,.38);
+
+      transform:
+        rotate(8deg);
+
+      z-index: 3;
+    }
+
+    #discardVisual::before {
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      background:
+        linear-gradient(
+          135deg,
+          #fff,
+          #ededed
+        );
+
+      border:
+        1px solid #aaa;
+
+      border-radius: 7px;
+
+      transform:
+        translate(-7px, 4px)
+        rotate(-15deg);
+
+      box-shadow:
+        0 3px 6px rgba(0,0,0,.3);
+
+      z-index: -1;
+    }
+
+    #discardVisual::after {
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      background:
         linear-gradient(
           135deg,
           #fff,
@@ -1019,88 +780,47 @@
         );
 
       border:
-
-        1px solid
-
-        #aaa;
+        1px solid #aaa;
 
       border-radius: 7px;
 
+      transform:
+        translate(6px, 5px)
+        rotate(11deg);
+
       box-shadow:
+        0 3px 6px rgba(0,0,0,.3);
 
-        0 4px 7px rgba(0,0,0,.35);
-
-      transform:
-
-        rotate(5deg);
-
+      z-index: -2;
     }
-
-
-    #discardVisual::after {
-
-      content: "FLIP";
-
-      position: absolute;
-
-      left: 50%;
-
-      top: 50%;
-
-      transform:
-
-        translate(-50%, -50%)
-
-        rotate(-5deg);
-
-      font-size: 11px;
-
-      font-weight: bold;
-
-      color: #888;
-
-      letter-spacing: 2px;
-
-    }
-
 
     #discardLabel {
-
       margin-top: 6px;
 
       font-size: 10px;
 
       opacity: .75;
-
     }
 
-
-
-    /* ================================================= */
-    /* CONTROLS                                          */
-    /* ================================================= */
+    /* ===================================== */
+    /* CONTROLS                              */
+    /* ===================================== */
 
     #controls {
-
       position: absolute;
 
       left: 39px;
-
       bottom: 30px;
 
       display: flex;
-
       flex-direction: column;
 
       gap: 7px;
 
       z-index: 60;
-
     }
 
-
     button {
-
       border: 0;
 
       border-radius: 9px;
@@ -1108,54 +828,38 @@
       padding: 10px 14px;
 
       font-size: 13px;
-
       font-weight: 700;
 
       cursor: pointer;
 
       box-shadow:
-
         0 3px 6px rgba(0,0,0,.35);
-
     }
 
-
     #discardButton {
-
       background: #e7ba36;
 
       color: #201807;
-
     }
 
-
     #newGameButton {
-
       background: #f1f1f1;
 
       color: #202020;
-
     }
-
 
     button:active {
-
       transform: translateY(2px);
-
     }
 
-
-
-    /* ================================================= */
-    /* INSTRUCTIONS                                      */
-    /* ================================================= */
+    /* ===================================== */
+    /* INSTRUCTIONS                          */
+    /* ===================================== */
 
     #instructions {
-
       position: absolute;
 
       left: 38px;
-
       bottom: 146px;
 
       width: 140px;
@@ -1163,23 +867,17 @@
       text-align: left;
 
       font-size: 10px;
-
       line-height: 1.25;
 
       color:
-
         rgba(255,255,255,.72);
-
     }
 
-
-
-    /* ================================================= */
-    /* WIN OVERLAY                                       */
-    /* ================================================= */
+    /* ===================================== */
+    /* WIN                                   */
+    /* ===================================== */
 
     #winOverlay {
-
       position: absolute;
 
       inset: 0;
@@ -1187,28 +885,21 @@
       display: none;
 
       align-items: center;
-
       justify-content: center;
 
       z-index: 5000;
 
       background:
-
         rgba(0,0,0,.48);
 
       backdrop-filter:
-
         blur(2px);
-
     }
 
-
     #winPanel {
-
       position: relative;
 
       width:
-
         min(390px, 82%);
 
       padding: 32px 20px;
@@ -1216,28 +907,20 @@
       border-radius: 22px;
 
       background:
-
         rgba(10,48,29,.94);
 
       border:
-
         2px solid
-
         rgba(240,198,60,.9);
 
       box-shadow:
-
         0 15px 40px rgba(0,0,0,.65);
 
       animation:
-
         winPop .45s ease-out;
-
     }
 
-
     #winPanel h2 {
-
       margin: 0;
 
       font-size: 34px;
@@ -1245,23 +928,16 @@
       color: #f0c63c;
 
       letter-spacing: 3px;
-
     }
 
-
     #winPanel p {
-
       margin:
-
         12px 0 20px;
 
       font-size: 16px;
-
     }
 
-
     #playAgainButton {
-
       background: #f0c63c;
 
       color: #1b1607;
@@ -1269,46 +945,32 @@
       font-size: 15px;
 
       padding: 12px 20px;
-
     }
 
-
     @keyframes winPop {
-
       from {
-
         transform:
-
           scale(.7);
 
         opacity: 0;
-
       }
 
       to {
-
         transform:
-
           scale(1);
 
         opacity: 1;
-
       }
-
     }
 
-
-
-    /* ================================================= */
-    /* CONFETTI                                          */
-    /* ================================================= */
+    /* ===================================== */
+    /* CONFETTI                              */
+    /* ===================================== */
 
     .confetti {
-
       position: absolute;
 
       width: 8px;
-
       height: 14px;
 
       top: -20px;
@@ -1318,217 +980,135 @@
       pointer-events: none;
 
       animation:
-
         fall linear forwards;
-
     }
 
-
     @keyframes fall {
-
       0% {
-
         transform:
-
           translateY(0)
-
           rotate(0deg);
 
         opacity: 1;
-
       }
 
       100% {
-
         transform:
-
           translateY(520px)
-
           rotate(720deg);
 
         opacity: 0;
-
       }
-
     }
 
-
-
-    /* ================================================= */
-    /* MOBILE                                            */
-    /* ================================================= */
+    /* ===================================== */
+    /* MOBILE                                */
+    /* ===================================== */
 
     @media (max-width: 600px) {
 
       #game {
-
         padding-left: 4px;
-
         padding-right: 4px;
-
       }
 
-
       #title {
-
         font-size: 36px;
 
         letter-spacing: 8px;
-
       }
 
-
       #stats {
-
         gap: 12px;
 
         font-size: 12px;
-
       }
-
 
       #stats strong {
-
         font-size: 13px;
-
       }
-
 
       #message {
-
         font-size: 13px;
-
       }
 
-
       #tableOuter {
-
         padding: 7px;
 
         border-radius: 48px;
-
       }
 
-
       #tableRail {
-
         padding: 5px;
 
         border-radius: 42px;
-
       }
 
-
       #tableFelt {
-
         height: 500px;
 
         border-radius: 37px;
-
       }
 
-
       #tableFelt::before {
-
         inset: 10px;
 
         border-radius: 29px;
-
       }
-
 
       #handArea {
-
         left: 8px;
-
         right: 8px;
-
         top: 13px;
-
       }
-
 
       .playingCard {
-
         width: 66px;
-
         height: 97px;
-
       }
-
 
       .dealCard {
-
         width: 66px;
-
         height: 97px;
-
       }
-
 
       .cardRank {
-
         font-size: 18px;
-
       }
-
 
       .cardSuit {
-
         font-size: 15px;
-
       }
-
 
       .centerSuit {
-
         font-size: 29px;
-
       }
-
 
       #controls {
-
         left: 20px;
-
         bottom: 27px;
-
       }
 
-
       #instructions {
-
         left: 20px;
-
         bottom: 140px;
 
         width: 105px;
-
       }
-
 
       #discardArea {
-
         right: 20px;
-
         bottom: 26px;
-
       }
-
 
       #deckArea {
-
         bottom: 24px;
-
       }
 
-
       button {
-
         font-size: 12px;
 
         padding: 9px 10px;
-
       }
 
     }
@@ -1536,18 +1116,13 @@
   </style>
 </head>
 
-
-
 <body>
 
-
   <div id="game">
-
 
     <div id="title">
       FLIP
     </div>
-
 
     <div id="stats">
 
@@ -1574,10 +1149,7 @@
 
     </div>
 
-
     <div id="message"></div>
-
-
 
     <div id="tableOuter">
 
@@ -1585,26 +1157,18 @@
 
         <div id="tableFelt">
 
-
           <div id="feltLogo">
             FLIP
           </div>
-
-
-
-          <!-- HAND -->
 
           <div id="handArea">
 
             <div id="playArea"></div>
 
-
             <div id="buriedStack">
 
               <div class="buriedCard"></div>
-
               <div class="buriedCard"></div>
-
               <div class="buriedCard"></div>
 
               <div id="buriedCount">
@@ -1619,19 +1183,11 @@
 
           </div>
 
-
-
-          <!-- INSTRUCTIONS -->
-
           <div id="instructions">
 
             Tap individual cards or drag across several cards to select them.
 
           </div>
-
-
-
-          <!-- BUTTONS -->
 
           <div id="controls">
 
@@ -1645,18 +1201,12 @@
 
           </div>
 
-
-
-          <!-- FACE DOWN DECK -->
-
           <div id="deckArea">
 
             <div id="deck">
 
               <div class="deckLayer one"></div>
-
               <div class="deckLayer two"></div>
-
               <div id="deckBack"></div>
 
             </div>
@@ -1670,10 +1220,6 @@
             </div>
 
           </div>
-
-
-
-          <!-- DISCARD PILE -->
 
           <div id="discardArea">
 
@@ -1690,10 +1236,6 @@
             </div>
 
           </div>
-
-
-
-          <!-- WIN SCREEN -->
 
           <div id="winOverlay">
 
@@ -1715,25 +1257,15 @@
 
           </div>
 
-
         </div>
 
       </div>
 
     </div>
 
-
   </div>
 
-
-
   <script>
-
-
-    /* ================================================= */
-    /* DECK DATA                                         */
-    /* ================================================= */
-
 
     const suits = [
       "♠",
@@ -1741,7 +1273,6 @@
       "♦",
       "♣"
     ];
-
 
     const ranks = [
       "A",
@@ -1759,8 +1290,6 @@
       "K"
     ];
 
-
-
     let deck = [];
 
     let faceUpCards = [];
@@ -1773,34 +1302,23 @@
 
     let isAnimating = false;
 
-
-
-    /* ================================================= */
-    /* DRAG / SWIPE STATE                                */
-    /* ================================================= */
-
+    /* ===================================== */
+    /* DRAG STATE                            */
+    /* ===================================== */
 
     let isDragging = false;
-
-    let dragStarted = false;
 
     let dragSelectionMode = true;
 
     let dragVisited = new Set();
 
-    let pointerStartX = 0;
+    let lastDragIndex = null;
 
-    let pointerStartY = 0;
-
-
-
-    /* ================================================= */
-    /* AUDIO                                             */
-    /* ================================================= */
-
+    /* ===================================== */
+    /* AUDIO                                 */
+    /* ===================================== */
 
     let audioContext = null;
-
 
     function getAudioContext() {
 
@@ -1814,10 +1332,7 @@
       }
 
       return audioContext;
-
     }
-
-
 
     function playTone(
       frequency,
@@ -1830,41 +1345,33 @@
         const ctx =
           getAudioContext();
 
-
         const oscillator =
           ctx.createOscillator();
-
 
         const gain =
           ctx.createGain();
 
-
         oscillator.type =
           "triangle";
 
-
         oscillator.frequency.value =
           frequency;
-
 
         gain.gain.setValueAtTime(
           volume,
           ctx.currentTime
         );
 
-
         gain.gain.exponentialRampToValueAtTime(
           0.001,
           ctx.currentTime + duration
         );
-
 
         oscillator.connect(gain);
 
         gain.connect(
           ctx.destination
         );
-
 
         oscillator.start();
 
@@ -1882,8 +1389,6 @@
 
     }
 
-
-
     function selectionSound() {
 
       playTone(
@@ -1893,8 +1398,6 @@
       );
 
     }
-
-
 
     function dealSound() {
 
@@ -1906,8 +1409,6 @@
 
     }
 
-
-
     function discardSound() {
 
       playTone(
@@ -1917,8 +1418,6 @@
       );
 
     }
-
-
 
     function winSound() {
 
@@ -1931,7 +1430,6 @@
         0
       );
 
-
       setTimeout(
         () => playTone(
           659,
@@ -1940,7 +1438,6 @@
         ),
         150
       );
-
 
       setTimeout(
         () => playTone(
@@ -1953,12 +1450,9 @@
 
     }
 
-
-
-    /* ================================================= */
-    /* SHUFFLE                                           */
-    /* ================================================= */
-
+    /* ===================================== */
+    /* SHUFFLE                               */
+    /* ===================================== */
 
     function shuffle(array) {
 
@@ -1977,7 +1471,6 @@
             (i + 1)
           );
 
-
         [
           array[i],
           array[j]
@@ -1990,12 +1483,9 @@
 
     }
 
-
-
-    /* ================================================= */
-    /* DECK VALIDATION                                   */
-    /* ================================================= */
-
+    /* ===================================== */
+    /* DECK VALIDATION                       */
+    /* ===================================== */
 
     function validateDeck() {
 
@@ -2009,9 +1499,7 @@
         );
 
         return false;
-
       }
-
 
       const cardNames =
         deck.map(
@@ -2020,12 +1508,10 @@
             card.suit
         );
 
-
       const uniqueCards =
         new Set(
           cardNames
         );
-
 
       if (
         uniqueCards.size !== 52
@@ -2036,25 +1522,18 @@
         );
 
         return false;
-
       }
-
 
       console.log(
         "FLIP deck verified: 52 unique cards."
       );
 
-
       return true;
-
     }
 
-
-
-    /* ================================================= */
-    /* NEW GAME                                          */
-    /* ================================================= */
-
+    /* ===================================== */
+    /* NEW GAME                              */
+    /* ===================================== */
 
     function newGame() {
 
@@ -2070,6 +1549,11 @@
 
       isAnimating = false;
 
+      isDragging = false;
+
+      lastDragIndex = null;
+
+      dragVisited.clear();
 
       for (
         let suit of suits
@@ -2091,7 +1575,6 @@
 
       }
 
-
       if (
         !validateDeck()
       ) {
@@ -2101,12 +1584,9 @@
         );
 
         return;
-
       }
 
-
       shuffle(deck);
-
 
       document
         .getElementById(
@@ -2115,14 +1595,12 @@
         .style.display =
         "none";
 
-
       document
         .getElementById(
           "discardVisual"
         )
         .style.display =
         "none";
-
 
       document
         .getElementById(
@@ -2131,24 +1609,19 @@
         .textContent =
         "";
 
-
       updateStats();
 
       updateDeck();
 
       renderCards();
 
-
       shuffleDeckAnimation();
 
     }
 
-
-
-    /* ================================================= */
-    /* SHUFFLE VISUAL                                    */
-    /* ================================================= */
-
+    /* ===================================== */
+    /* SHUFFLE VISUAL                        */
+    /* ===================================== */
 
     function shuffleDeckAnimation() {
 
@@ -2156,7 +1629,6 @@
         document.getElementById(
           "deck"
         );
-
 
       deckElement.animate(
 
@@ -2206,12 +1678,9 @@
 
     }
 
-
-
-    /* ================================================= */
-    /* FLIP / DEAL CARD                                  */
-    /* ================================================= */
-
+    /* ===================================== */
+    /* DEAL                                  */
+    /* ===================================== */
 
     function flipCard() {
 
@@ -2231,9 +1700,7 @@
         }
 
         return;
-
       }
-
 
       isAnimating = true;
 
@@ -2241,40 +1708,32 @@
 
       showAllCards = false;
 
-
       const card =
         deck.pop();
-
 
       const table =
         document.getElementById(
           "tableFelt"
         );
 
-
       const deckArea =
         document.getElementById(
           "deckArea"
         );
 
-
       const tableRect =
         table.getBoundingClientRect();
 
-
       const deckRect =
         deckArea.getBoundingClientRect();
-
 
       const flyingCard =
         document.createElement(
           "div"
         );
 
-
       flyingCard.className =
         "dealCard";
-
 
       flyingCard.style.left =
         (
@@ -2284,7 +1743,6 @@
         )
         + "px";
 
-
       flyingCard.style.top =
         (
           deckRect.top -
@@ -2292,14 +1750,11 @@
         )
         + "px";
 
-
       table.appendChild(
         flyingCard
       );
 
-
       dealSound();
-
 
       requestAnimationFrame(
 
@@ -2308,10 +1763,8 @@
           flyingCard.style.left =
             "50%";
 
-
           flyingCard.style.top =
             "95px";
-
 
           flyingCard.style.transform =
             "translateX(-50%) rotateY(180deg) scale(.92)";
@@ -2319,7 +1772,6 @@
         }
 
       );
-
 
       setTimeout(
 
@@ -2329,9 +1781,7 @@
             card
           );
 
-
           flyingCard.remove();
-
 
           updateStats();
 
@@ -2339,9 +1789,7 @@
 
           renderCards();
 
-
           isAnimating = false;
-
 
           if (
             deck.length === 0
@@ -2361,12 +1809,9 @@
 
     }
 
-
-
-    /* ================================================= */
-    /* TAP SELECTION                                     */
-    /* ================================================= */
-
+    /* ===================================== */
+    /* TAP SELECTION                         */
+    /* ===================================== */
 
     function toggleCardSelection(
       index,
@@ -2377,7 +1822,6 @@
         selectedIndexes.indexOf(
           index
         );
-
 
       if (
         position === -1
@@ -2398,12 +1842,10 @@
 
       }
 
-
       selectedIndexes.sort(
         (a,b) =>
           a - b
       );
-
 
       if (
         playSound
@@ -2413,17 +1855,12 @@
 
       }
 
-
       renderCards();
-
     }
 
-
-
-    /* ================================================= */
-    /* SWIPE / DRAG SELECTION                            */
-    /* ================================================= */
-
+    /* ===================================== */
+    /* DRAG SELECTION                        */
+    /* ===================================== */
 
     function startDrag(
       event,
@@ -2435,170 +1872,47 @@
       ) {
 
         return;
-
       }
-
 
       event.preventDefault();
 
-
       isDragging = true;
-
-      dragStarted = false;
 
       dragVisited.clear();
 
-
-      pointerStartX =
-        event.clientX;
-
-
-      pointerStartY =
-        event.clientY;
-
+      lastDragIndex = index;
 
       dragSelectionMode =
         !selectedIndexes.includes(
           index
         );
 
-
-      dragVisited.add(
-        index
-      );
-
-    }
-
-
-
-    function continueDrag(
-      event
-    ) {
+      /*
+        Immediately apply the selection
+        to the FIRST card touched.
+      */
 
       if (
-        !isDragging
+        dragSelectionMode
       ) {
 
-        return;
+        if (
+          !selectedIndexes.includes(
+            index
+          )
+        ) {
+
+          selectedIndexes.push(
+            index
+          );
+
+          selectionSound();
+
+        }
 
       }
 
-
-      event.preventDefault();
-
-
-      const distance =
-
-        Math.hypot(
-
-          event.clientX -
-          pointerStartX,
-
-          event.clientY -
-          pointerStartY
-
-        );
-
-
-      if (
-        distance > 7
-      ) {
-
-        dragStarted =
-          true;
-
-      }
-
-
-      if (
-        !dragStarted
-      ) {
-
-        return;
-
-      }
-
-
-      const element =
-        document.elementFromPoint(
-
-          event.clientX,
-
-          event.clientY
-
-        );
-
-
-      if (
-        !element
-      ) {
-
-        return;
-
-      }
-
-
-      const card =
-        element.closest(
-          ".playingCard"
-        );
-
-
-      if (
-        !card
-      ) {
-
-        return;
-
-      }
-
-
-      const index =
-        Number(
-          card.dataset.index
-        );
-
-
-      if (
-        dragVisited.has(
-          index
-        )
-      ) {
-
-        return;
-
-      }
-
-
-      dragVisited.add(
-        index
-      );
-
-
-      const alreadySelected =
-        selectedIndexes.includes(
-          index
-        );
-
-
-      if (
-        dragSelectionMode &&
-        !alreadySelected
-      ) {
-
-        selectedIndexes.push(
-          index
-        );
-
-        selectionSound();
-
-      }
-
-
-      if (
-        !dragSelectionMode &&
-        alreadySelected
-      ) {
+      else {
 
         selectedIndexes =
           selectedIndexes.filter(
@@ -2610,22 +1924,20 @@
 
       }
 
+      dragVisited.add(
+        index
+      );
 
       selectedIndexes.sort(
         (a,b) =>
           a - b
       );
 
-
       renderCards();
-
     }
 
-
-
-    function endDrag(
-      event,
-      startingIndex
+    function continueDrag(
+      event
     ) {
 
       if (
@@ -2633,89 +1945,141 @@
       ) {
 
         return;
-
       }
 
+      event.preventDefault();
 
-      if (
-        !dragStarted
-      ) {
-
-        toggleCardSelection(
-          startingIndex
+      const element =
+        document.elementFromPoint(
+          event.clientX,
+          event.clientY
         );
 
+      if (
+        !element
+      ) {
+
+        return;
       }
 
-      else {
+      const card =
+        element.closest(
+          ".playingCard"
+        );
 
-        /*
-          Make sure the starting card
-          is included in a drag.
-        */
+      if (
+        !card
+      ) {
 
-        const selected =
-          selectedIndexes.includes(
-            startingIndex
-          );
+        return;
+      }
 
+      const currentIndex =
+        Number(
+          card.dataset.index
+        );
+
+      if (
+        currentIndex ===
+        lastDragIndex
+      ) {
+
+        return;
+      }
+
+      /*
+        Fill every index between the
+        previous card and the current card.
+        Fast swipes therefore don't skip
+        cards in the middle.
+      */
+
+      const low =
+        Math.min(
+          lastDragIndex,
+          currentIndex
+        );
+
+      const high =
+        Math.max(
+          lastDragIndex,
+          currentIndex
+        );
+
+      for (
+        let index = low;
+        index <= high;
+        index++
+      ) {
 
         if (
           dragSelectionMode &&
-          !selected
+          !selectedIndexes.includes(
+            index
+          )
         ) {
 
           selectedIndexes.push(
-            startingIndex
+            index
           );
+
+          selectionSound();
 
         }
 
-
         if (
           !dragSelectionMode &&
-          selected
+          selectedIndexes.includes(
+            index
+          )
         ) {
 
           selectedIndexes =
             selectedIndexes.filter(
-              index =>
-                index !==
-                startingIndex
+              item =>
+                item !== index
             );
+
+          selectionSound();
 
         }
 
-
-        selectedIndexes.sort(
-          (a,b) =>
-            a - b
+        dragVisited.add(
+          index
         );
-
-
-        renderCards();
 
       }
 
+      lastDragIndex =
+        currentIndex;
 
-      isDragging =
-        false;
+      selectedIndexes.sort(
+        (a,b) =>
+          a - b
+      );
 
+      renderCards();
+    }
 
-      dragStarted =
-        false;
+    function endDrag() {
 
+      if (
+        !isDragging
+      ) {
+
+        return;
+      }
+
+      isDragging = false;
 
       dragVisited.clear();
 
+      lastDragIndex = null;
     }
 
-
-
-    /* ================================================= */
-    /* DISCARD VALIDATION                                */
-    /* ================================================= */
-
+    /* ===================================== */
+    /* DISCARD                               */
+    /* ===================================== */
 
     function discardSelected() {
 
@@ -2724,9 +2088,7 @@
       ) {
 
         return;
-
       }
-
 
       if (
         selectedIndexes.length === 0
@@ -2737,15 +2099,11 @@
         );
 
         return;
-
       }
-
-
 
       /*
         SAME SUIT:
-
-        select the middle two cards.
+        Select the middle two.
       */
 
       if (
@@ -2755,10 +2113,8 @@
         const first =
           selectedIndexes[0];
 
-
         const second =
           selectedIndexes[1];
-
 
         if (
           second !==
@@ -2768,17 +2124,13 @@
           invalidMove();
 
           return;
-
         }
-
 
         const left =
           first - 1;
 
-
         const right =
           second + 1;
-
 
         if (
           left < 0 ||
@@ -2789,9 +2141,7 @@
           invalidMove();
 
           return;
-
         }
-
 
         if (
           faceUpCards[left].suit ===
@@ -2807,17 +2157,13 @@
           );
 
           return;
-
         }
 
       }
 
-
-
       /*
         SAME RANK:
-
-        select all four consecutive cards.
+        Select all four.
       */
 
       if (
@@ -2832,15 +2178,11 @@
         ] =
           selectedIndexes;
 
-
         const consecutive =
 
           b === a + 1 &&
-
           c === a + 2 &&
-
           d === a + 3;
-
 
         if (
           !consecutive
@@ -2849,9 +2191,7 @@
           invalidMove();
 
           return;
-
         }
-
 
         if (
           faceUpCards[a].rank ===
@@ -2867,22 +2207,12 @@
           );
 
           return;
-
         }
 
       }
 
-
       invalidMove();
-
     }
-
-
-
-    /* ================================================= */
-    /* INVALID MOVE                                      */
-    /* ================================================= */
-
 
     function invalidMove() {
 
@@ -2890,12 +2220,10 @@
         "That isn't a valid discard."
       );
 
-
       const button =
         document.getElementById(
           "discardButton"
         );
-
 
       button.animate(
 
@@ -2933,12 +2261,9 @@
 
     }
 
-
-
-    /* ================================================= */
-    /* DISCARD ANIMATION                                 */
-    /* ================================================= */
-
+    /* ===================================== */
+    /* DISCARD ANIMATION                     */
+    /* ===================================== */
 
     function animateDiscard(
       indexes,
@@ -2948,15 +2273,12 @@
       isAnimating =
         true;
 
-
       discardSound();
-
 
       const cards =
         document.querySelectorAll(
           ".playingCard"
         );
-
 
       cards.forEach(
 
@@ -2966,7 +2288,6 @@
             Number(
               card.dataset.index
             );
-
 
           if (
             indexes.includes(
@@ -2984,18 +2305,15 @@
 
       );
 
-
       setTimeout(
 
         function() {
-
 
           const descending =
             [...indexes].sort(
               (a,b) =>
                 b - a
             );
-
 
           for (
             let index of descending
@@ -3008,15 +2326,12 @@
 
           }
 
-
           discardedCount +=
             indexes.length;
-
 
           selectedIndexes = [];
 
           showAllCards = false;
-
 
           document
             .getElementById(
@@ -3025,20 +2340,16 @@
             .style.display =
             "block";
 
-
           showMessage(
             message
           );
-
 
           updateStats();
 
           renderCards();
 
-
           isAnimating =
             false;
-
 
           checkForWin();
 
@@ -3050,12 +2361,9 @@
 
     }
 
-
-
-    /* ================================================= */
-    /* WIN DETECTION                                     */
-    /* ================================================= */
-
+    /* ===================================== */
+    /* WIN                                   */
+    /* ===================================== */
 
     function checkForWin() {
 
@@ -3071,12 +2379,9 @@
 
     }
 
-
-
     function winGame() {
 
       winSound();
-
 
       document
         .getElementById(
@@ -3085,17 +2390,8 @@
         .style.display =
         "flex";
 
-
       createConfetti();
-
     }
-
-
-
-    /* ================================================= */
-    /* CONFETTI                                          */
-    /* ================================================= */
-
 
     function createConfetti() {
 
@@ -3104,27 +2400,19 @@
           "tableFelt"
         );
 
-
       const colors = [
 
         "#f0c63c",
-
         "#ffffff",
-
         "#d33a3a",
-
         "#3aa9d3",
-
         "#65d37d"
 
       ];
 
-
       for (
         let i = 0;
-
         i < 65;
-
         i++
       ) {
 
@@ -3133,10 +2421,8 @@
             "div"
           );
 
-
         piece.className =
           "confetti";
-
 
         piece.style.left =
           (
@@ -3144,7 +2430,6 @@
             100
           )
           + "%";
-
 
         piece.style.background =
           colors[
@@ -3154,7 +2439,6 @@
             )
           ];
 
-
         piece.style.animationDuration =
           (
             1.8 +
@@ -3163,7 +2447,6 @@
           )
           + "s";
 
-
         piece.style.animationDelay =
           (
             Math.random() *
@@ -3171,11 +2454,9 @@
           )
           + "s";
 
-
         table.appendChild(
           piece
         );
-
 
         setTimeout(
 
@@ -3190,12 +2471,9 @@
 
     }
 
-
-
-    /* ================================================= */
-    /* STATS                                             */
-    /* ================================================= */
-
+    /* ===================================== */
+    /* STATS                                 */
+    /* ===================================== */
 
     function updateStats() {
 
@@ -3206,7 +2484,6 @@
         .textContent =
         deck.length;
 
-
       document
         .getElementById(
           "discarded"
@@ -3214,22 +2491,13 @@
         .textContent =
         discardedCount;
 
-
       document
         .getElementById(
           "inHand"
         )
         .textContent =
         faceUpCards.length;
-
     }
-
-
-
-    /* ================================================= */
-    /* MESSAGE                                           */
-    /* ================================================= */
-
 
     function showMessage(
       text
@@ -3241,15 +2509,11 @@
         )
         .textContent =
         text;
-
     }
 
-
-
-    /* ================================================= */
-    /* DECK DISPLAY                                      */
-    /* ================================================= */
-
+    /* ===================================== */
+    /* DECK DISPLAY                          */
+    /* ===================================== */
 
     function updateDeck() {
 
@@ -3257,7 +2521,6 @@
         document.getElementById(
           "deckArea"
         );
-
 
       document
         .getElementById(
@@ -3272,7 +2535,6 @@
           ? " card"
           : " cards"
         );
-
 
       if (
         deck.length === 0
@@ -3294,12 +2556,9 @@
 
     }
 
-
-
-    /* ================================================= */
-    /* CARD CORNERS                                      */
-    /* ================================================= */
-
+    /* ===================================== */
+    /* CARD CREATION                         */
+    /* ===================================== */
 
     function createCorner(
       card,
@@ -3311,63 +2570,47 @@
           "div"
         );
 
-
       corner.className =
         bottom
-
         ? "bottomCorner"
-
         : "cardCorner";
-
 
       const rank =
         document.createElement(
           "div"
         );
 
-
       rank.className =
         "cardRank";
 
-
       rank.textContent =
         card.rank;
-
 
       const suit =
         document.createElement(
           "div"
         );
 
-
       suit.className =
         "cardSuit";
 
-
       suit.textContent =
         card.suit;
-
 
       corner.appendChild(
         rank
       );
 
-
       corner.appendChild(
         suit
       );
 
-
       return corner;
-
     }
 
-
-
-    /* ================================================= */
-    /* LAYOUT                                            */
-    /* ================================================= */
-
+    /* ===================================== */
+    /* LAYOUT                                */
+    /* ===================================== */
 
     function getLayoutInfo() {
 
@@ -3376,73 +2619,43 @@
           "playArea"
         );
 
-
       const width =
         area.clientWidth;
-
 
       const phone =
         window.innerWidth <=
         600;
-
 
       const cardWidth =
         phone
         ? 66
         : 74;
 
-
       const minimumSpacing =
         phone
         ? 26
         : 29;
 
+      /*
+        Always start burying cards after
+        11 cards are visible.
+      */
 
-      const maxVisible =
-
-        Math.max(
-
-          4,
-
-          Math.floor(
-
-            (
-              width -
-              cardWidth -
-              20
-            )
-
-            /
-
-            minimumSpacing
-
-          )
-
-          + 1
-
-        );
-
+      const maxVisible = 11;
 
       return {
 
         width,
-
         cardWidth,
-
         minimumSpacing,
-
         maxVisible
 
       };
-
     }
 
-
-
-    /* ================================================= */
-    /* HAND RENDERING                                    */
-    /* ================================================= */
-
+    /* ===================================== */
+    /* RENDER HAND                           */
+    /* ===================================== */
 
     function renderCards() {
 
@@ -3451,26 +2664,21 @@
           "playArea"
         );
 
-
       const buried =
         document.getElementById(
           "buriedStack"
         );
-
 
       const buriedCount =
         document.getElementById(
           "buriedCount"
         );
 
-
       playArea.innerHTML =
         "";
 
-
       const count =
         faceUpCards.length;
-
 
       if (
         count === 0
@@ -3480,18 +2688,14 @@
           "none";
 
         return;
-
       }
-
 
       const layout =
         getLayoutInfo();
 
-
       let startIndex = 0;
 
       let hiddenCount = 0;
-
 
       if (
         !showAllCards &&
@@ -3504,21 +2708,17 @@
           count -
           layout.maxVisible;
 
-
         startIndex =
           hiddenCount;
 
       }
-
 
       const visible =
         faceUpCards.slice(
           startIndex
         );
 
-
       let spacing;
-
 
       if (
         showAllCards
@@ -3578,7 +2778,6 @@
 
       }
 
-
       const leftMargin =
 
         hiddenCount > 0 &&
@@ -3588,13 +2787,11 @@
 
         : 7;
 
-
       const usableWidth =
 
         layout.width -
         leftMargin -
         7;
-
 
       const totalWidth =
 
@@ -3606,7 +2803,6 @@
           visible.length - 1,
           0
         );
-
 
       const startX =
 
@@ -3625,7 +2821,6 @@
 
         );
 
-
       visible.forEach(
 
         function(
@@ -3633,26 +2828,21 @@
           visibleIndex
         ) {
 
-
           const actualIndex =
 
             startIndex +
             visibleIndex;
-
 
           const cardDiv =
             document.createElement(
               "div"
             );
 
-
           cardDiv.className =
             "playingCard";
 
-
           cardDiv.dataset.index =
             actualIndex;
-
 
           if (
             card.suit === "♥" ||
@@ -3664,7 +2854,6 @@
             );
 
           }
-
 
           if (
             selectedIndexes.includes(
@@ -3678,7 +2867,6 @@
 
           }
 
-
           cardDiv.style.left =
 
             (
@@ -3689,7 +2877,6 @@
 
             + "px";
 
-
           const middle =
 
             (
@@ -3698,7 +2885,6 @@
             )
 
             / 2;
-
 
           const distance =
 
@@ -3714,12 +2900,10 @@
               1
             );
 
-
           const curve =
 
             distance *
             17;
-
 
           cardDiv.style.top =
 
@@ -3729,7 +2913,6 @@
             )
 
             + "px";
-
 
           const rotation =
 
@@ -3755,7 +2938,6 @@
 
             * 6;
 
-
           cardDiv.style.setProperty(
 
             "--rotation",
@@ -3765,12 +2947,10 @@
 
           );
 
-
           cardDiv.style.zIndex =
 
             100 +
             visibleIndex;
-
 
           cardDiv.appendChild(
 
@@ -3781,25 +2961,20 @@
 
           );
 
-
           const center =
             document.createElement(
               "div"
             );
 
-
           center.className =
             "centerSuit";
-
 
           center.textContent =
             card.suit;
 
-
           cardDiv.appendChild(
             center
           );
-
 
           cardDiv.appendChild(
 
@@ -3810,15 +2985,6 @@
 
           );
 
-
-
-          /*
-            POINTER DOWN
-
-            Works with mouse,
-            touchscreen and stylus.
-          */
-
           cardDiv.addEventListener(
 
             "pointerdown",
@@ -3826,36 +2992,13 @@
             function(event) {
 
               startDrag(
-
                 event,
-
                 actualIndex
-
               );
 
             }
 
           );
-
-
-          cardDiv.addEventListener(
-
-            "pointerup",
-
-            function(event) {
-
-              endDrag(
-
-                event,
-
-                actualIndex
-
-              );
-
-            }
-
-          );
-
 
           playArea.appendChild(
             cardDiv
@@ -3865,7 +3008,6 @@
 
       );
 
-
       if (
         hiddenCount > 0 &&
         !showAllCards
@@ -3874,7 +3016,6 @@
         buriedCount.textContent =
           "+" +
           hiddenCount;
-
 
         buried.style.display =
           "block";
@@ -3890,12 +3031,9 @@
 
     }
 
-
-
-    /* ================================================= */
-    /* SPREAD BURIED CARDS                               */
-    /* ================================================= */
-
+    /* ===================================== */
+    /* SPREAD                                */
+    /* ===================================== */
 
     function toggleSpread(
       event
@@ -3909,23 +3047,18 @@
 
       }
 
-
       if (
         faceUpCards.length <=
         getLayoutInfo().maxVisible
       ) {
 
         return;
-
       }
-
 
       showAllCards =
         !showAllCards;
 
-
       selectedIndexes = [];
-
 
       if (
         showAllCards
@@ -3945,17 +3078,12 @@
 
       }
 
-
       renderCards();
-
     }
 
-
-
-    /* ================================================= */
-    /* GLOBAL POINTER DRAG                               */
-    /* ================================================= */
-
+    /* ===================================== */
+    /* GLOBAL POINTER EVENTS                 */
+    /* ===================================== */
 
     document.addEventListener(
 
@@ -3969,37 +3097,67 @@
 
     );
 
-
     document.addEventListener(
 
       "pointerup",
 
       function() {
 
-        if (
-          isDragging
-        ) {
-
-          isDragging =
-            false;
-
-          dragStarted =
-            false;
-
-          dragVisited.clear();
-
-        }
+        endDrag();
 
       }
 
     );
 
+    /* ===================================== */
+    /* FELT = DESELECT ALL                   */
+    /* ===================================== */
 
+    document
+      .getElementById(
+        "tableFelt"
+      )
+      .addEventListener(
 
-    /* ================================================= */
-    /* EVENTS                                            */
-    /* ================================================= */
+        "pointerdown",
 
+        function(event) {
+
+          /*
+            Don't deselect when the user
+            touched an interactive element.
+          */
+
+          if (
+            event.target.closest(
+              ".playingCard, #deckArea, #discardButton, #newGameButton, #buriedStack, #discardArea, #winOverlay"
+            )
+          ) {
+
+            return;
+
+          }
+
+          if (
+            selectedIndexes.length >
+            0
+          ) {
+
+            selectedIndexes = [];
+
+            renderCards();
+
+            showMessage("");
+
+          }
+
+        }
+
+      );
+
+    /* ===================================== */
+    /* BUTTON EVENTS                         */
+    /* ===================================== */
 
     document
       .getElementById(
@@ -4010,7 +3168,6 @@
         flipCard
       );
 
-
     document
       .getElementById(
         "discardButton"
@@ -4019,7 +3176,6 @@
         "click",
         discardSelected
       );
-
 
     document
       .getElementById(
@@ -4030,7 +3186,6 @@
         newGame
       );
 
-
     document
       .getElementById(
         "playAgainButton"
@@ -4039,7 +3194,6 @@
         "click",
         newGame
       );
-
 
     document
       .getElementById(
@@ -4050,27 +3204,18 @@
         toggleSpread
       );
 
-
     window.addEventListener(
-
       "resize",
-
       renderCards
-
     );
 
-
-
-    /* ================================================= */
-    /* START                                             */
-    /* ================================================= */
-
+    /* ===================================== */
+    /* START                                 */
+    /* ===================================== */
 
     newGame();
 
-
   </script>
-
 
 </body>
 </html>
