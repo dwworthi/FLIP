@@ -22,15 +22,11 @@ const ranks = [
 ];
 
 let deck = [];
-
 let faceUpCards = [];
-
+let discardedCards = [];
 let selectedIndexes = [];
-
 let discardedCount = 0;
-
 let showAllCards = false;
-
 let isAnimating = false;
 
 /* ===================================== */
@@ -38,148 +34,9 @@ let isAnimating = false;
 /* ===================================== */
 
 let isDragging = false;
-
 let dragSelectionMode = true;
-
 let dragVisited = new Set();
-
 let lastDragIndex = null;
-
-/* ===================================== */
-/* AUDIO                                 */
-/* ===================================== */
-
-let audioContext = null;
-
-function getAudioContext() {
-
-  if (!audioContext) {
-
-    audioContext = new (
-      window.AudioContext ||
-      window.webkitAudioContext
-    )();
-
-  }
-
-  return audioContext;
-}
-
-function playTone(
-  frequency,
-  duration,
-  volume
-) {
-
-  try {
-
-    const ctx =
-      getAudioContext();
-
-    const oscillator =
-      ctx.createOscillator();
-
-    const gain =
-      ctx.createGain();
-
-    oscillator.type =
-      "triangle";
-
-    oscillator.frequency.value =
-      frequency;
-
-    gain.gain.setValueAtTime(
-      volume,
-      ctx.currentTime
-    );
-
-    gain.gain.exponentialRampToValueAtTime(
-      0.001,
-      ctx.currentTime + duration
-    );
-
-    oscillator.connect(gain);
-
-    gain.connect(
-      ctx.destination
-    );
-
-    oscillator.start();
-
-    oscillator.stop(
-      ctx.currentTime + duration
-    );
-
-  }
-
-  catch (error) {
-
-    // Sound is optional.
-
-  }
-
-}
-
-function selectionSound() {
-
-  playTone(
-    480,
-    .055,
-    .035
-  );
-
-}
-
-function dealSound() {
-
-  playTone(
-    270,
-    .07,
-    .025
-  );
-
-}
-
-function discardSound() {
-
-  playTone(
-    170,
-    .14,
-    .055
-  );
-
-}
-
-function winSound() {
-
-  setTimeout(
-    () => playTone(
-      523,
-      .18,
-      .05
-    ),
-    0
-  );
-
-  setTimeout(
-    () => playTone(
-      659,
-      .18,
-      .05
-    ),
-    150
-  );
-
-  setTimeout(
-    () => playTone(
-      784,
-      .35,
-      .06
-    ),
-    300
-  );
-
-}
 
 /* ===================================== */
 /* SHUFFLE                               */
@@ -188,11 +45,8 @@ function winSound() {
 function shuffle(array) {
 
   for (
-    let i =
-      array.length - 1;
-
+    let i = array.length - 1;
     i > 0;
-
     i--
   ) {
 
@@ -269,19 +123,13 @@ function validateDeck() {
 function newGame() {
 
   deck = [];
-
   faceUpCards = [];
-
+  discardedCards = [];
   selectedIndexes = [];
-
   discardedCount = 0;
-
   showAllCards = false;
-
   isAnimating = false;
-
   isDragging = false;
-
   lastDragIndex = null;
 
   dragVisited.clear();
@@ -295,11 +143,8 @@ function newGame() {
     ) {
 
       deck.push({
-
         suit: suit,
-
         rank: rank
-
       });
 
     }
@@ -328,24 +173,15 @@ function newGame() {
 
   document
     .getElementById(
-      "discardVisual"
-    )
-    .style.display =
-    "none";
-
-  document
-    .getElementById(
       "message"
     )
     .textContent =
     "";
 
   updateStats();
-
   updateDeck();
-
   renderCards();
-
+  renderDiscardPile();
   shuffleDeckAnimation();
 
 }
@@ -362,49 +198,36 @@ function shuffleDeckAnimation() {
     );
 
   deckElement.animate(
-
     [
-
       {
         transform:
           "translateX(0) rotate(0deg)"
       },
-
       {
         transform:
           "translateX(-8px) rotate(-4deg)"
       },
-
       {
         transform:
           "translateX(8px) rotate(4deg)"
       },
-
       {
         transform:
           "translateX(-6px) rotate(-3deg)"
       },
-
       {
         transform:
           "translateX(6px) rotate(3deg)"
       },
-
       {
         transform:
           "translateX(0) rotate(0deg)"
       }
-
     ],
-
     {
-
       duration: 450,
-
       iterations: 1
-
     }
-
   );
 
 }
@@ -434,9 +257,7 @@ function flipCard() {
   }
 
   isAnimating = true;
-
   selectedIndexes = [];
-
   showAllCards = false;
 
   const card =
@@ -485,10 +306,7 @@ function flipCard() {
     flyingCard
   );
 
-  dealSound();
-
   requestAnimationFrame(
-
     function() {
 
       flyingCard.style.left =
@@ -501,11 +319,9 @@ function flipCard() {
         "translateX(-50%) rotateY(180deg) scale(.92)";
 
     }
-
   );
 
   setTimeout(
-
     function() {
 
       faceUpCards.push(
@@ -515,9 +331,7 @@ function flipCard() {
       flyingCard.remove();
 
       updateStats();
-
       updateDeck();
-
       renderCards();
 
       isAnimating = false;
@@ -533,60 +347,9 @@ function flipCard() {
       }
 
     },
-
     330
-
   );
 
-}
-
-/* ===================================== */
-/* TAP SELECTION                         */
-/* ===================================== */
-
-function toggleCardSelection(
-  index,
-  playSound = true
-) {
-
-  const position =
-    selectedIndexes.indexOf(
-      index
-    );
-
-  if (
-    position === -1
-  ) {
-
-    selectedIndexes.push(
-      index
-    );
-
-  }
-
-  else {
-
-    selectedIndexes.splice(
-      position,
-      1
-    );
-
-  }
-
-  selectedIndexes.sort(
-    (a,b) =>
-      a - b
-  );
-
-  if (
-    playSound
-  ) {
-
-    selectionSound();
-
-  }
-
-  renderCards();
 }
 
 /* ===================================== */
@@ -608,9 +371,7 @@ function startDrag(
   event.preventDefault();
 
   isDragging = true;
-
   dragVisited.clear();
-
   lastDragIndex = index;
 
   dragSelectionMode =
@@ -618,37 +379,7 @@ function startDrag(
       index
     );
 
-  if (
-    dragSelectionMode
-  ) {
-
-    if (
-      !selectedIndexes.includes(
-        index
-      )
-    ) {
-
-      selectedIndexes.push(
-        index
-      );
-
-      selectionSound();
-
-    }
-
-  }
-
-  else {
-
-    selectedIndexes =
-      selectedIndexes.filter(
-        item =>
-          item !== index
-      );
-
-    selectionSound();
-
-  }
+  applyDragSelection(index);
 
   dragVisited.add(
     index
@@ -660,6 +391,39 @@ function startDrag(
   );
 
   renderCards();
+}
+
+function applyDragSelection(index) {
+
+  const isSelected =
+    selectedIndexes.includes(
+      index
+    );
+
+  if (
+    dragSelectionMode &&
+    !isSelected
+  ) {
+
+    selectedIndexes.push(
+      index
+    );
+
+  }
+
+  if (
+    !dragSelectionMode &&
+    isSelected
+  ) {
+
+    selectedIndexes =
+      selectedIndexes.filter(
+        item =>
+          item !== index
+      );
+
+  }
+
 }
 
 function continueDrag(
@@ -731,37 +495,9 @@ function continueDrag(
     index++
   ) {
 
-    if (
-      dragSelectionMode &&
-      !selectedIndexes.includes(
-        index
-      )
-    ) {
-
-      selectedIndexes.push(
-        index
-      );
-
-      selectionSound();
-
-    }
-
-    if (
-      !dragSelectionMode &&
-      selectedIndexes.includes(
-        index
-      )
-    ) {
-
-      selectedIndexes =
-        selectedIndexes.filter(
-          item =>
-            item !== index
-        );
-
-      selectionSound();
-
-    }
+    applyDragSelection(
+      index
+    );
 
     dragVisited.add(
       index
@@ -790,9 +526,7 @@ function endDrag() {
   }
 
   isDragging = false;
-
   dragVisited.clear();
-
   lastDragIndex = null;
 }
 
@@ -863,11 +597,8 @@ function discardSelected() {
     ) {
 
       animateDiscard(
-
         [...selectedIndexes],
-
         "Same suit — middle two discarded!"
-
       );
 
       return;
@@ -888,7 +619,6 @@ function discardSelected() {
       selectedIndexes;
 
     const consecutive =
-
       b === a + 1 &&
       c === a + 2 &&
       d === a + 3;
@@ -908,11 +638,8 @@ function discardSelected() {
     ) {
 
       animateDiscard(
-
         [...selectedIndexes],
-
         "Same rank — all four discarded!"
-
       );
 
       return;
@@ -935,37 +662,27 @@ function invalidMove() {
     );
 
   button.animate(
-
     [
-
       {
         transform:
           "translateX(0)"
       },
-
       {
         transform:
           "translateX(-5px)"
       },
-
       {
         transform:
           "translateX(5px)"
       },
-
       {
         transform:
           "translateX(0)"
       }
-
     ],
-
     {
-
       duration: 180
-
     }
-
   );
 
 }
@@ -979,10 +696,7 @@ function animateDiscard(
   message
 ) {
 
-  isAnimating =
-    true;
-
-  discardSound();
+  isAnimating = true;
 
   const cards =
     document.querySelectorAll(
@@ -990,7 +704,6 @@ function animateDiscard(
     );
 
   cards.forEach(
-
     card => {
 
       const index =
@@ -1011,12 +724,20 @@ function animateDiscard(
       }
 
     }
-
   );
 
   setTimeout(
-
     function() {
+
+      const cardsBeingDiscarded =
+        indexes.map(
+          index =>
+            faceUpCards[index]
+        );
+
+      discardedCards.push(
+        ...cardsBeingDiscarded
+      );
 
       const descending =
         [...indexes].sort(
@@ -1039,33 +760,218 @@ function animateDiscard(
         indexes.length;
 
       selectedIndexes = [];
-
       showAllCards = false;
-
-      document
-        .getElementById(
-          "discardVisual"
-        )
-        .style.display =
-        "block";
 
       showMessage(
         message
       );
 
       updateStats();
-
       renderCards();
+      renderDiscardPile();
 
-      isAnimating =
-        false;
+      isAnimating = false;
 
       checkForWin();
 
     },
-
     280
+  );
 
+}
+
+/* ===================================== */
+/* DISCARD PILE                          */
+/* ===================================== */
+
+function renderDiscardPile() {
+
+  const pile =
+    document.getElementById(
+      "discardPile"
+    );
+
+  pile.innerHTML = "";
+
+  if (
+    discardedCards.length === 0
+  ) {
+
+    const placeholder =
+      document.createElement(
+        "div"
+      );
+
+    placeholder.className =
+      "discardPlaceholder";
+
+    pile.appendChild(
+      placeholder
+    );
+
+    return;
+  }
+
+  const visibleCards =
+    discardedCards.slice(-6);
+
+  const rotations =
+    [-12, 8, -5, 13, -8, 5];
+
+  const offsets =
+    [
+      [-5, 3],
+      [4, 0],
+      [-2, -2],
+      [5, 4],
+      [-4, 1],
+      [1, -3]
+    ];
+
+  visibleCards.forEach(
+    function(card, index) {
+
+      const discardCard =
+        document.createElement(
+          "div"
+        );
+
+      discardCard.style.position =
+        "absolute";
+
+      discardCard.style.left =
+        "5px";
+
+      discardCard.style.top =
+        "3px";
+
+      discardCard.style.width =
+        "58px";
+
+      discardCard.style.height =
+        "84px";
+
+      discardCard.style.border =
+        "1px solid #999";
+
+      discardCard.style.borderRadius =
+        "7px";
+
+      discardCard.style.background =
+        "linear-gradient(135deg,#fff,#ededed)";
+
+      discardCard.style.boxShadow =
+        "0 3px 6px rgba(0,0,0,.4)";
+
+      discardCard.style.overflow =
+        "hidden";
+
+      discardCard.style.fontFamily =
+        'Georgia, "Times New Roman", serif';
+
+      discardCard.style.color =
+        (
+          card.suit === "♥" ||
+          card.suit === "♦"
+        )
+        ? "#c51f2c"
+        : "#111";
+
+      discardCard.style.transform =
+        "translate(" +
+        offsets[index][0] +
+        "px," +
+        offsets[index][1] +
+        "px) rotate(" +
+        rotations[index] +
+        "deg)";
+
+      discardCard.style.zIndex =
+        String(index + 1);
+
+      const rank =
+        document.createElement(
+          "div"
+        );
+
+      rank.textContent =
+        card.rank;
+
+      rank.style.position =
+        "absolute";
+
+      rank.style.top =
+        "3px";
+
+      rank.style.left =
+        "5px";
+
+      rank.style.fontSize =
+        "15px";
+
+      rank.style.fontWeight =
+        "bold";
+
+      const suit =
+        document.createElement(
+          "div"
+        );
+
+      suit.textContent =
+        card.suit;
+
+      suit.style.position =
+        "absolute";
+
+      suit.style.top =
+        "19px";
+
+      suit.style.left =
+        "6px";
+
+      suit.style.fontSize =
+        "13px";
+
+      const center =
+        document.createElement(
+          "div"
+        );
+
+      center.textContent =
+        card.suit;
+
+      center.style.position =
+        "absolute";
+
+      center.style.left =
+        "50%";
+
+      center.style.top =
+        "54%";
+
+      center.style.transform =
+        "translate(-50%,-50%)";
+
+      center.style.fontSize =
+        "25px";
+
+      discardCard.appendChild(
+        rank
+      );
+
+      discardCard.appendChild(
+        suit
+      );
+
+      discardCard.appendChild(
+        center
+      );
+
+      pile.appendChild(
+        discardCard
+      );
+
+    }
   );
 
 }
@@ -1090,8 +996,6 @@ function checkForWin() {
 
 function winGame() {
 
-  winSound();
-
   document
     .getElementById(
       "winOverlay"
@@ -1110,13 +1014,11 @@ function createConfetti() {
     );
 
   const colors = [
-
     "#f0c63c",
     "#ffffff",
     "#d33a3a",
     "#3aa9d3",
     "#65d37d"
-
   ];
 
   for (
@@ -1168,12 +1070,9 @@ function createConfetti() {
     );
 
     setTimeout(
-
       () =>
         piece.remove(),
-
       4000
-
     );
 
   }
@@ -1236,9 +1135,7 @@ function updateDeck() {
       "deckCount"
     )
     .textContent =
-
     deck.length +
-
     (
       deck.length === 1
       ? " card"
@@ -1337,28 +1234,24 @@ function getLayoutInfo() {
 
   const cardWidth =
     phone
-    ? 66
+    ? 59
     : 74;
 
   const minimumSpacing =
     phone
-    ? 26
+    ? 25
     : 29;
 
-  /*
-    Always start burying cards after
-    11 cards are visible.
-  */
-
-  const maxVisible = 11;
+  const maxVisible =
+    phone
+    ? 9
+    : 11;
 
   return {
-
     width,
     cardWidth,
     minimumSpacing,
     maxVisible
-
   };
 }
 
@@ -1403,7 +1296,6 @@ function renderCards() {
     getLayoutInfo();
 
   let startIndex = 0;
-
   let hiddenCount = 0;
 
   if (
@@ -1413,7 +1305,6 @@ function renderCards() {
   ) {
 
     hiddenCount =
-
       count -
       layout.maxVisible;
 
@@ -1434,24 +1325,18 @@ function renderCards() {
   ) {
 
     spacing =
-
       Math.max(
-
         8,
-
         (
           layout.width -
           layout.cardWidth -
           16
         )
-
         /
-
         Math.max(
           count - 1,
           1
         )
-
       );
 
   }
@@ -1459,86 +1344,66 @@ function renderCards() {
   else {
 
     spacing =
-
       Math.min(
-
-        45,
-
+        phoneSpacingLimit(),
         Math.max(
-
           layout.minimumSpacing,
-
           (
             layout.width -
             layout.cardWidth -
-            20
+            24
           )
-
           /
-
           Math.max(
             visible.length - 1,
             1
           )
-
         )
-
       );
 
   }
 
   const leftMargin =
-
     hiddenCount > 0 &&
     !showAllCards
-
-    ? 92
-
+    ? (
+        window.innerWidth <= 600
+        ? 58
+        : 92
+      )
     : 7;
 
   const usableWidth =
-
     layout.width -
     leftMargin -
     7;
 
   const totalWidth =
-
     layout.cardWidth +
-
     spacing *
-
     Math.max(
       visible.length - 1,
       0
     );
 
   const startX =
-
     leftMargin +
-
     Math.max(
-
       0,
-
       (
         usableWidth -
         totalWidth
       )
-
       / 2
-
     );
 
   visible.forEach(
-
     function(
       card,
       visibleIndex
     ) {
 
       const actualIndex =
-
         startIndex +
         visibleIndex;
 
@@ -1577,97 +1442,86 @@ function renderCards() {
       }
 
       cardDiv.style.left =
-
         (
           startX +
           visibleIndex *
           spacing
         )
-
         + "px";
 
       const middle =
-
         (
           visible.length -
           1
         )
-
         / 2;
 
       const distance =
-
         Math.abs(
           visibleIndex -
           middle
         )
-
         /
-
         Math.max(
           middle,
           1
         );
 
       const curve =
-
         distance *
-        17;
+        (
+          window.innerWidth <= 600
+          ? 10
+          : 17
+        );
 
       cardDiv.style.top =
-
         (
-          56 +
-          curve
+          window.innerWidth <= 600
+          ? 45
+          : 56
         )
-
+        +
+        curve
         + "px";
 
       const rotation =
-
         visible.length === 1
-
         ? 0
-
         :
-
         (
           (
             visibleIndex -
             middle
           )
-
           /
-
           Math.max(
             middle,
             1
           )
         )
-
-        * 6;
+        *
+        (
+          window.innerWidth <= 600
+          ? 4
+          : 6
+        );
 
       cardDiv.style.setProperty(
-
         "--rotation",
-
         rotation +
         "deg"
-
       );
 
       cardDiv.style.zIndex =
-
         100 +
         visibleIndex;
 
       cardDiv.appendChild(
-
         createCorner(
           card,
           false
         )
-
       );
 
       const center =
@@ -1686,18 +1540,14 @@ function renderCards() {
       );
 
       cardDiv.appendChild(
-
         createCorner(
           card,
           true
         )
-
       );
 
       cardDiv.addEventListener(
-
         "pointerdown",
-
         function(event) {
 
           startDrag(
@@ -1706,7 +1556,6 @@ function renderCards() {
           );
 
         }
-
       );
 
       playArea.appendChild(
@@ -1714,7 +1563,6 @@ function renderCards() {
       );
 
     }
-
   );
 
   if (
@@ -1737,6 +1585,16 @@ function renderCards() {
       "none";
 
   }
+
+}
+
+function phoneSpacingLimit() {
+
+  return (
+    window.innerWidth <= 600
+    ? 31
+    : 45
+  );
 
 }
 
@@ -1795,27 +1653,20 @@ function toggleSpread(
 /* ===================================== */
 
 document.addEventListener(
-
   "pointermove",
-
   continueDrag,
-
   {
     passive: false
   }
-
 );
 
 document.addEventListener(
-
   "pointerup",
-
   function() {
 
     endDrag();
 
   }
-
 );
 
 /* ===================================== */
@@ -1827,9 +1678,7 @@ document
     "tableFelt"
   )
   .addEventListener(
-
     "pointerdown",
-
     function(event) {
 
       if (
@@ -1839,7 +1688,6 @@ document
       ) {
 
         return;
-
       }
 
       if (
@@ -1856,7 +1704,6 @@ document
       }
 
     }
-
   );
 
 /* ===================================== */
