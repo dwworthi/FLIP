@@ -1290,58 +1290,49 @@ button:active {
     font-size: 11px;
     border-radius: 10px;
   }
-
-}
 /* ===================================== */
-/* PHONE CARD SIZE / READABILITY         */
+/* FINAL PHONE CARD SIZE                 */
 /* ===================================== */
 
 @media (max-width: 600px) {
 
-  /* Larger cards in play */
   .playingCard {
-    width: 70px;
-    height: 103px;
-    border-radius: 7px;
+    width: 76px !important;
+    height: 112px !important;
+    border-radius: 8px !important;
   }
 
-  /* Larger card during flip animation */
   .dealCard {
-    width: 70px;
-    height: 103px;
+    width: 76px !important;
+    height: 112px !important;
   }
 
-  /* Top-left rank/suit area */
   .cardCorner {
-    top: 5px;
-    left: 5px;
-    width: 23px;
+    top: 6px !important;
+    left: 6px !important;
+    width: 25px !important;
   }
 
-  /* Bottom-right matching corner */
   .bottomCorner {
-    right: 5px;
-    bottom: 5px;
-    width: 23px;
+    right: 6px !important;
+    bottom: 6px !important;
+    width: 25px !important;
   }
 
-  /* A, 2, 3, J, Q, K, etc. */
   .cardRank {
-    font-size: 19px;
-    line-height: 17px;
+    font-size: 21px !important;
+    line-height: 19px !important;
   }
 
-  /* ♠ ♥ ♦ ♣ underneath the number */
   .cardSuit {
-    margin-top: 5px;
-    font-size: 18px;
-    line-height: 17px;
-    font-weight: bold;
+    margin-top: 6px !important;
+    font-size: 21px !important;
+    line-height: 19px !important;
+    font-weight: bold !important;
   }
 
-  /* Large suit in middle of card */
   .centerSuit {
-    font-size: 32px;
+    font-size: 37px !important;
   }
 
 }
