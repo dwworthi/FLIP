@@ -26,6 +26,7 @@ let faceUpCards = [];
 let discardedCards = [];
 let selectedIndexes = [];
 let discardedCount = 0;
+
 let showAllCards = false;
 let isAnimating = false;
 
@@ -36,7 +37,15 @@ let gamesPlayed =
     )
   ) || 0;
 
+let winsPlayed =
+  Number(
+    localStorage.getItem(
+      "flipWins"
+    )
+  ) || 0;
+
 let currentGameCounted = false;
+let currentGameWon = false;
 
 /* ===================================== */
 /* DRAG STATE                            */
@@ -136,11 +145,15 @@ function newGame() {
   discardedCards = [];
   selectedIndexes = [];
   discardedCount = 0;
+
   showAllCards = false;
   isAnimating = false;
+
   isDragging = false;
   lastDragIndex = null;
+
   currentGameCounted = false;
+  currentGameWon = false;
 
   dragVisited.clear();
 
@@ -181,17 +194,13 @@ function newGame() {
     .style.display =
     "none";
 
-  document
-    .getElementById(
-      "message"
-    )
-    .textContent =
-    "";
+  showMessage("");
 
   updateStats();
   updateDeck();
   renderCards();
   renderDiscardPile();
+
   shuffleDeckAnimation();
 
 }
@@ -266,11 +275,6 @@ function flipCard() {
     return;
   }
 
-  /*
-    A game counts only once the player
-    actually flips their first card.
-  */
-
   if (
     !currentGameCounted
   ) {
@@ -289,6 +293,7 @@ function flipCard() {
   }
 
   isAnimating = true;
+
   selectedIndexes = [];
   showAllCards = false;
 
@@ -345,7 +350,7 @@ function flipCard() {
         "50%";
 
       flyingCard.style.top =
-        "95px";
+        "110px";
 
       flyingCard.style.transform =
         "translateX(-50%) rotateY(180deg) scale(.92)";
@@ -403,7 +408,9 @@ function startDrag(
   event.preventDefault();
 
   isDragging = true;
+
   dragVisited.clear();
+
   lastDragIndex = index;
 
   dragSelectionMode =
@@ -411,7 +418,9 @@ function startDrag(
       index
     );
 
-  applyDragSelection(index);
+  applyDragSelection(
+    index
+  );
 
   dragVisited.add(
     index
@@ -423,9 +432,12 @@ function startDrag(
   );
 
   renderCards();
+
 }
 
-function applyDragSelection(index) {
+function applyDragSelection(
+  index
+) {
 
   const isSelected =
     selectedIndexes.includes(
@@ -546,6 +558,7 @@ function continueDrag(
   );
 
   renderCards();
+
 }
 
 function endDrag() {
@@ -558,12 +571,15 @@ function endDrag() {
   }
 
   isDragging = false;
+
   dragVisited.clear();
+
   lastDragIndex = null;
+
 }
 
 /* ===================================== */
-/* DISCARD                               */
+/* DISCARD RULES                         */
 /* ===================================== */
 
 function discardSelected() {
@@ -680,6 +696,7 @@ function discardSelected() {
   }
 
   invalidMove();
+
 }
 
 function invalidMove() {
@@ -697,19 +714,19 @@ function invalidMove() {
     [
       {
         transform:
-          "translateX(0)"
+          "translateX(-50%) translateX(0)"
       },
       {
         transform:
-          "translateX(-5px)"
+          "translateX(-50%) translateX(-5px)"
       },
       {
         transform:
-          "translateX(5px)"
+          "translateX(-50%) translateX(5px)"
       },
       {
         transform:
-          "translateX(0)"
+          "translateX(-50%) translateX(0)"
       }
     ],
     {
@@ -792,6 +809,7 @@ function animateDiscard(
         indexes.length;
 
       selectedIndexes = [];
+
       showAllCards = false;
 
       showMessage(
@@ -799,7 +817,9 @@ function animateDiscard(
       );
 
       updateStats();
+
       renderCards();
+
       renderDiscardPile();
 
       isAnimating = false;
@@ -823,7 +843,8 @@ function renderDiscardPile() {
       "discardPile"
     );
 
-  pile.innerHTML = "";
+  pile.innerHTML =
+    "";
 
   if (
     discardedCards.length === 0
@@ -842,6 +863,7 @@ function renderDiscardPile() {
     );
 
     return;
+
   }
 
   const visibleCards =
@@ -861,7 +883,10 @@ function renderDiscardPile() {
     ];
 
   visibleCards.forEach(
-    function(card, index) {
+    function(
+      card,
+      index
+    ) {
 
       const discardCard =
         document.createElement(
@@ -1028,6 +1053,23 @@ function checkForWin() {
 
 function winGame() {
 
+  if (
+    !currentGameWon
+  ) {
+
+    currentGameWon = true;
+
+    winsPlayed++;
+
+    localStorage.setItem(
+      "flipWins",
+      winsPlayed
+    );
+
+    updateStats();
+
+  }
+
   document
     .getElementById(
       "winOverlay"
@@ -1036,6 +1078,7 @@ function winGame() {
     "flex";
 
   createConfetti();
+
 }
 
 function createConfetti() {
@@ -1152,6 +1195,20 @@ function updateStats() {
 
   }
 
+  const winsElement =
+    document.getElementById(
+      "winsPlayed"
+    );
+
+  if (
+    winsElement
+  ) {
+
+    winsElement.textContent =
+      winsPlayed;
+
+  }
+
 }
 
 function showMessage(
@@ -1164,6 +1221,7 @@ function showMessage(
     )
     .textContent =
     text;
+
 }
 
 /* ===================================== */
@@ -1259,6 +1317,7 @@ function createCorner(
   );
 
   return corner;
+
 }
 
 /* ===================================== */
@@ -1289,11 +1348,6 @@ function getLayoutInfo() {
     ? 25
     : 29;
 
-  /*
-    Phones show a maximum of 8 cards.
-    Larger screens show a maximum of 11.
-  */
-
   const maxVisible =
     phone
     ? 8
@@ -1305,6 +1359,7 @@ function getLayoutInfo() {
     minimumSpacing,
     maxVisible
   };
+
 }
 
 /* ===================================== */
@@ -1342,6 +1397,7 @@ function renderCards() {
       "none";
 
     return;
+
   }
 
   const layout =
@@ -1672,6 +1728,7 @@ function toggleSpread(
   ) {
 
     return;
+
   }
 
   showAllCards =
@@ -1679,25 +1736,14 @@ function toggleSpread(
 
   selectedIndexes = [];
 
-  if (
+  showMessage(
     showAllCards
-  ) {
-
-    showMessage(
-      "Hand spread out."
-    );
-
-  }
-
-  else {
-
-    showMessage(
-      ""
-    );
-
-  }
+    ? "Hand spread out."
+    : ""
+  );
 
   renderCards();
+
 }
 
 /* ===================================== */
@@ -1740,6 +1786,7 @@ document
       ) {
 
         return;
+
       }
 
       if (
