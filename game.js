@@ -29,6 +29,15 @@ let discardedCount = 0;
 let showAllCards = false;
 let isAnimating = false;
 
+let gamesPlayed =
+  Number(
+    localStorage.getItem(
+      "flipGamesPlayed"
+    )
+  ) || 0;
+
+let currentGameCounted = false;
+
 /* ===================================== */
 /* DRAG STATE                            */
 /* ===================================== */
@@ -131,6 +140,7 @@ function newGame() {
   isAnimating = false;
   isDragging = false;
   lastDragIndex = null;
+  currentGameCounted = false;
 
   dragVisited.clear();
 
@@ -254,6 +264,28 @@ function flipCard() {
     }
 
     return;
+  }
+
+  /*
+    A game counts only once the player
+    actually flips their first card.
+  */
+
+  if (
+    !currentGameCounted
+  ) {
+
+    gamesPlayed++;
+
+    currentGameCounted = true;
+
+    localStorage.setItem(
+      "flipGamesPlayed",
+      gamesPlayed
+    );
+
+    updateStats();
+
   }
 
   isAnimating = true;
@@ -1105,6 +1137,21 @@ function updateStats() {
     )
     .textContent =
     faceUpCards.length;
+
+  const gamesElement =
+    document.getElementById(
+      "gamesPlayed"
+    );
+
+  if (
+    gamesElement
+  ) {
+
+    gamesElement.textContent =
+      gamesPlayed;
+
+  }
+
 }
 
 function showMessage(
@@ -1242,9 +1289,14 @@ function getLayoutInfo() {
     ? 25
     : 29;
 
+  /*
+    Phones show a maximum of 8 cards.
+    Larger screens show a maximum of 11.
+  */
+
   const maxVisible =
     phone
-    ? 9
+    ? 8
     : 11;
 
   return {
