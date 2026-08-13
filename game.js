@@ -1340,7 +1340,7 @@ function getLayoutInfo() {
 
   const cardWidth =
     phone
-    ? 59
+    ? 76
     : 74;
 
   const minimumSpacing =
