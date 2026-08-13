@@ -1292,3 +1292,56 @@ button:active {
   }
 
 }
+/* ===================================== */
+/* PHONE CARD SIZE / READABILITY         */
+/* ===================================== */
+
+@media (max-width: 600px) {
+
+  /* Larger cards in play */
+  .playingCard {
+    width: 70px;
+    height: 103px;
+    border-radius: 7px;
+  }
+
+  /* Larger card during flip animation */
+  .dealCard {
+    width: 70px;
+    height: 103px;
+  }
+
+  /* Top-left rank/suit area */
+  .cardCorner {
+    top: 5px;
+    left: 5px;
+    width: 23px;
+  }
+
+  /* Bottom-right matching corner */
+  .bottomCorner {
+    right: 5px;
+    bottom: 5px;
+    width: 23px;
+  }
+
+  /* A, 2, 3, J, Q, K, etc. */
+  .cardRank {
+    font-size: 19px;
+    line-height: 17px;
+  }
+
+  /* ♠ ♥ ♦ ♣ underneath the number */
+  .cardSuit {
+    margin-top: 5px;
+    font-size: 18px;
+    line-height: 17px;
+    font-weight: bold;
+  }
+
+  /* Large suit in middle of card */
+  .centerSuit {
+    font-size: 32px;
+  }
+
+}
