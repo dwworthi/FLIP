@@ -22,18 +22,19 @@
     body {
       margin: 0;
       padding: 0;
-      width: 100%;
       min-height: 100%;
-      background: #080808;
       overscroll-behavior: none;
     }
 
     body {
+      min-height: 100vh;
+
       font-family:
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
         Arial,
+        Helvetica,
         sans-serif;
 
       color: white;
@@ -58,160 +59,145 @@
       margin: auto;
 
       padding:
-        max(5px, env(safe-area-inset-top))
-        7px
-        max(6px, env(safe-area-inset-bottom));
+        max(10px, env(safe-area-inset-top))
+        8px
+        max(20px, env(safe-area-inset-bottom));
     }
 
-    /* ========================================= */
-    /* HEADER                                    */
-    /* ========================================= */
-
     #title {
-      margin: 0;
-
-      font-size: 40px;
+      margin: 2px 0 4px;
+      font-size: 43px;
       font-weight: 800;
-      letter-spacing: 9px;
+      letter-spacing: 10px;
 
       text-shadow:
-        0 3px 4px rgba(0,0,0,.8);
+        0 3px 3px rgba(0,0,0,.8),
+        0 0 15px rgba(255,255,255,.08);
     }
 
     #stats {
       display: flex;
       justify-content: center;
-      gap: 22px;
+      gap: 25px;
       flex-wrap: wrap;
-
-      margin-top: 1px;
-
-      color: rgba(255,255,255,.78);
-
-      font-size: 13px;
+      margin-bottom: 3px;
+      font-size: 14px;
+      color: rgba(255,255,255,.8);
     }
 
     #stats strong {
-      margin-left: 2px;
+      margin-left: 3px;
+      font-size: 16px;
       color: white;
-      font-size: 15px;
     }
 
     #message {
-      height: 24px;
+      height: 27px;
+      margin-top: 3px;
+      font-size: 15px;
+      font-weight: 650;
 
       display: flex;
-      justify-content: center;
       align-items: center;
-
-      font-size: 13px;
-      font-weight: 650;
+      justify-content: center;
     }
 
-    /* ========================================= */
-    /* TABLE                                     */
-    /* ========================================= */
+    /* ===================================== */
+    /* TABLE                                 */
+    /* ===================================== */
 
     #tableOuter {
-      margin: 3px auto 0;
-      padding: 11px;
-
-      border-radius: 70px;
-
-      border: 3px solid #120905;
+      margin: 7px auto 0;
+      padding: 13px;
+      border-radius: 80px;
 
       background:
         linear-gradient(
-          155deg,
-          #794c2d 0%,
-          #492918 35%,
-          #27140b 70%,
+          160deg,
+          #75482b 0%,
+          #4a2917 32%,
+          #241209 72%,
           #130904 100%
         );
 
+      border: 3px solid #120905;
+
       box-shadow:
         inset 0 4px 5px rgba(255,255,255,.14),
-        inset 0 -10px 14px rgba(0,0,0,.7),
-        0 10px 24px rgba(0,0,0,.65);
+        inset 0 -10px 15px rgba(0,0,0,.75),
+        0 15px 30px rgba(0,0,0,.65);
     }
 
     #tableRail {
-      padding: 8px;
-
-      border-radius: 58px;
+      padding: 10px;
+      border-radius: 66px;
 
       background:
         linear-gradient(
           180deg,
-          #292929,
-          #121212 65%,
+          #242424,
+          #101010 65%,
           #080808
         );
 
       box-shadow:
         inset 0 4px 7px rgba(255,255,255,.07),
-        inset 0 -7px 10px rgba(0,0,0,.8);
+        inset 0 -6px 10px rgba(0,0,0,.8);
     }
 
     #tableFelt {
       position: relative;
-
-      height: 490px;
-
+      height: 500px;
       overflow: hidden;
-
-      border-radius: 48px;
+      border-radius: 55px;
 
       background-color: #075e37;
 
       background-image:
         radial-gradient(
           ellipse at 50% 35%,
-          rgba(24,161,92,.45),
-          rgba(3,76,42,.16) 58%,
+          rgba(25,160,92,.45),
+          rgba(2,70,38,.1) 58%,
           rgba(0,0,0,.28) 100%
         ),
 
         repeating-linear-gradient(
           25deg,
-          rgba(255,255,255,.013) 0px,
-          rgba(255,255,255,.013) 1px,
-          rgba(0,0,0,.013) 2px,
-          rgba(0,0,0,.013) 4px
+          rgba(255,255,255,.012) 0px,
+          rgba(255,255,255,.012) 1px,
+          rgba(0,0,0,.014) 2px,
+          rgba(0,0,0,.014) 4px
         );
 
       box-shadow:
-        inset 0 0 60px rgba(0,0,0,.4),
-        inset 0 0 8px rgba(0,0,0,.65);
+        inset 0 0 65px rgba(0,0,0,.42),
+        inset 0 0 8px rgba(0,0,0,.7);
     }
 
     #tableFelt::before {
       content: "";
-
       position: absolute;
-      inset: 15px;
+      inset: 17px;
 
       border:
         1px solid
-        rgba(255,255,255,.16);
+        rgba(255,255,255,.13);
 
-      border-radius: 37px;
-
+      border-radius: 42px;
       pointer-events: none;
     }
 
     #feltLogo {
       position: absolute;
-
       left: 50%;
       top: 53%;
 
       transform:
         translate(-50%, -50%);
 
-      font-size: 48px;
+      font-size: 50px;
+      letter-spacing: 15px;
       font-weight: 800;
-      letter-spacing: 13px;
 
       color:
         rgba(255,255,255,.035);
@@ -219,18 +205,18 @@
       pointer-events: none;
     }
 
-    /* ========================================= */
-    /* HAND                                      */
-    /* ========================================= */
+    /* ===================================== */
+    /* HAND                                  */
+    /* ===================================== */
 
     #handArea {
       position: absolute;
 
-      left: 20px;
-      right: 20px;
-      top: 17px;
+      left: 22px;
+      right: 22px;
+      top: 15px;
 
-      height: 220px;
+      height: 275px;
 
       overflow: hidden;
 
@@ -239,25 +225,28 @@
 
     #playArea {
       position: relative;
-
       width: 100%;
-      height: 210px;
+      height: 260px;
     }
 
-    /* ========================================= */
-    /* PLAYING CARDS                             */
-    /* ========================================= */
+    /* ===================================== */
+    /* PLAYING CARDS                         */
+    /* ===================================== */
 
     .playingCard {
       position: absolute;
 
-      width: 72px;
-      height: 105px;
+      width: 74px;
+      height: 108px;
 
-      border: 1px solid rgba(70,70,70,.65);
+      border:
+        1px solid
+        rgba(80,80,80,.65);
+
       border-radius: 8px;
 
       overflow: hidden;
+      cursor: pointer;
 
       color: #101010;
 
@@ -265,12 +254,13 @@
         linear-gradient(
           135deg,
           #ffffff 0%,
-          #fdfdfd 60%,
+          #fefefe 55%,
           #eeeeee 100%
         );
 
       box-shadow:
-        0 4px 9px rgba(0,0,0,.48);
+        0 4px 9px rgba(0,0,0,.48),
+        inset 0 0 2px rgba(0,0,0,.15);
 
       transform:
         translateY(var(--lift, 0px))
@@ -279,13 +269,11 @@
       transform-origin: bottom center;
 
       transition:
-        left .22s ease,
-        top .22s ease,
-        transform .16s ease,
-        box-shadow .16s ease,
-        opacity .22s ease;
-
-      cursor: pointer;
+        left .25s ease,
+        top .25s ease,
+        transform .18s ease,
+        box-shadow .18s ease,
+        opacity .25s ease;
 
       touch-action: none;
     }
@@ -295,63 +283,57 @@
     }
 
     .playingCard.selected {
-      --lift: -28px;
+      --lift: -31px;
 
       box-shadow:
-        0 0 0 4px #efc43c,
-        0 12px 18px rgba(0,0,0,.55);
+        0 0 0 4px #f0c63c,
+        0 13px 20px rgba(0,0,0,.55);
     }
 
     .cardCorner {
       position: absolute;
-
       top: 5px;
       left: 5px;
-
-      width: 23px;
-
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
+      width: 24px;
       line-height: .82;
 
       font-family:
         Georgia,
         "Times New Roman",
         serif;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .bottomCorner {
       position: absolute;
-
       right: 5px;
       bottom: 5px;
-
-      width: 23px;
-
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
+      width: 24px;
       line-height: .82;
 
       font-family:
         Georgia,
         "Times New Roman",
         serif;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
       transform: rotate(180deg);
     }
 
     .cardRank {
-      font-size: 19px;
+      font-size: 20px;
       font-weight: bold;
     }
 
     .cardSuit {
       margin-top: 5px;
-      font-size: 16px;
+      font-size: 17px;
     }
 
     .centerSuit {
@@ -363,518 +345,27 @@
       transform:
         translate(-50%, -50%);
 
-      font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-      font-size: 32px;
-
-      opacity: .87;
-    }
-
-    /* ========================================= */
-    /* BURIED CARDS                              */
-    /* ========================================= */
-
-    #buriedStack {
-      position: absolute;
-
-      left: 2px;
-      top: 65px;
-
-      width: 60px;
-      height: 95px;
-
-      display: none;
-
-      z-index: 80;
-
-      cursor: pointer;
-    }
-
-    .buriedCard {
-      position: absolute;
-
-      width: 55px;
-      height: 82px;
-
-      border: 1px solid #999;
-      border-radius: 6px;
-
-      background: white;
-
-      box-shadow:
-        0 3px 6px rgba(0,0,0,.4);
-    }
-
-    .buriedCard:nth-child(1) {
-      transform:
-        translate(-3px,5px)
-        rotate(-7deg);
-    }
-
-    .buriedCard:nth-child(2) {
-      transform:
-        translate(2px,2px)
-        rotate(5deg);
-    }
-
-    .buriedCard:nth-child(3) {
-      transform:
-        translate(5px,0)
-        rotate(-2deg);
-    }
-
-    #buriedCount {
-      position: absolute;
-
-      right: -2px;
-      top: -9px;
-
-      min-width: 27px;
-      height: 27px;
-
-      padding: 5px;
-
-      border-radius: 20px;
-
-      background: #e5b936;
-      color: #171207;
-
-      font-size: 12px;
-      font-weight: bold;
-
-      z-index: 20;
-    }
-
-    #buriedLabel {
-      position: absolute;
-
-      top: 87px;
-      left: -5px;
-
-      width: 70px;
-
-      font-size: 9px;
-
-      color:
-        rgba(255,255,255,.82);
-    }
-
-    /* ========================================= */
-    /* DISCARD BUTTON                            */
-    /* ========================================= */
-
-    #discardButton {
-      position: absolute;
-
-      left: 50%;
-      top: 235px;
-
-      transform:
-        translateX(-50%);
-
-      z-index: 90;
-    }
-
-    /* ========================================= */
-    /* DECK                                      */
-    /* ========================================= */
-
-    #deckArea {
-      position: absolute;
-
-      left: 50%;
-      bottom: 23px;
-
-      transform:
-        translateX(-50%);
-
-      width: 92px;
-
-      z-index: 55;
-
-      cursor: pointer;
-    }
-
-    #deck {
-      position: relative;
-
-      width: 70px;
-      height: 102px;
-
-      margin: auto;
-
-      transition:
-        transform .1s ease;
-    }
-
-    #deckArea:active #deck {
-      transform:
-        translateY(2px)
-        scale(.98);
-    }
-
-    .deckLayer {
-      position: absolute;
-
-      width: 67px;
-      height: 98px;
-
-      border-radius: 7px;
-
-      border: 1px solid #ddd;
-
-      background: white;
-    }
-
-    .deckLayer.one {
-      left: -5px;
-      top: 5px;
-    }
-
-    .deckLayer.two {
-      left: -2px;
-      top: 2px;
-    }
-
-    #deckBack {
-      position: absolute;
-
-      left: 0;
-      top: 0;
-
-      width: 67px;
-      height: 98px;
-
-      border-radius: 7px;
-
-      border: 5px solid white;
-
-      background:
-        repeating-linear-gradient(
-          45deg,
-          rgba(255,255,255,.18) 0px,
-          rgba(255,255,255,.18) 2px,
-          transparent 2px,
-          transparent 5px
-        ),
-
-        repeating-linear-gradient(
-          -45deg,
-          rgba(255,255,255,.10) 0px,
-          rgba(255,255,255,.10) 2px,
-          transparent 2px,
-          transparent 5px
-        ),
-
-        #193f8f;
-
-      box-shadow:
-        0 6px 11px rgba(0,0,0,.52);
-    }
-
-    #deckBack::after {
-      content: "";
-
-      position: absolute;
-
-      inset: 6px;
-
-      border:
-        2px solid
-        rgba(255,255,255,.72);
-
-      border-radius: 3px;
-    }
-
-    #deckCount {
-      margin-top: 5px;
-
-      font-size: 11px;
-      font-weight: bold;
-    }
-
-    #tapDeck {
-      margin-top: 1px;
-
-      font-size: 9px;
-
-      opacity: .75;
-    }
-
-    #deckArea.empty {
-      opacity: .28;
-    }
-
-    /* ========================================= */
-    /* DISCARD PILE                              */
-    /* ========================================= */
-
-    #discardArea {
-      position: absolute;
-
-      right: 27px;
-      bottom: 29px;
-
-      width: 82px;
-      height: 115px;
-
-      z-index: 45;
-    }
-
-    #discardPile {
-      position: relative;
-
-      width: 68px;
-      height: 91px;
-
-      margin: auto;
-    }
-
-    .discardPlaceholder {
-      position: absolute;
-
-      left: 6px;
-      top: 4px;
-
-      width: 57px;
-      height: 83px;
-
-      border:
-        2px dashed
-        rgba(255,255,255,.20);
-
-      border-radius: 6px;
-    }
-
-    .discardCard {
-      position: absolute;
-
-      left: 6px;
-      top: 4px;
-
-      width: 57px;
-      height: 83px;
-
-      border: 1px solid #999;
-      border-radius: 6px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #fff,
-          #ededed
-        );
-
-      color: #111;
-
-      box-shadow:
-        0 3px 6px rgba(0,0,0,.42);
-
-      overflow: hidden;
+      font-size: 34px;
 
       font-family:
         Georgia,
         "Times New Roman",
         serif;
 
-      transform-origin:
-        center center;
+      opacity: .88;
     }
 
-    .discardCard.red {
-      color: #c51f2c;
-    }
-
-    .miniRank {
-      position: absolute;
-
-      top: 3px;
-      left: 5px;
-
-      font-size: 15px;
-      font-weight: bold;
-    }
-
-    .miniSuit {
-      position: absolute;
-
-      top: 18px;
-      left: 6px;
-
-      font-size: 13px;
-    }
-
-    .miniCenter {
-      position: absolute;
-
-      left: 50%;
-      top: 54%;
-
-      transform:
-        translate(-50%, -50%);
-
-      font-size: 25px;
-    }
-
-    #discardLabel {
-      margin-top: 3px;
-
-      font-size: 9px;
-
-      opacity: .75;
-    }
-
-    /* ========================================= */
-    /* BUTTONS                                   */
-    /* ========================================= */
-
-    button {
-      width: 106px;
-      height: 34px;
-
-      padding: 0 5px;
-
-      border: 0;
-      border-radius: 8px;
-
-      font-size: 11px;
-      font-weight: 700;
-
-      cursor: pointer;
-
-      box-shadow:
-        0 3px 6px rgba(0,0,0,.35);
-    }
-
-    button:active {
-      transform:
-        translateY(2px);
-    }
-
-    #discardButton {
-      background: #e5b936;
-      color: #211a08;
-    }
-
-    #discardButton:active {
-      transform:
-        translateX(-50%)
-        translateY(2px);
-    }
-
-    #newGameButton {
-      position: absolute;
-
-      left: 28px;
-      bottom: 44px;
-
-      z-index: 60;
-
-      background: #efefef;
-      color: #222;
-    }
-
-    /* ========================================= */
-    /* WIN                                       */
-    /* ========================================= */
-
-    #winOverlay {
-      position: absolute;
-
-      inset: 0;
-
-      display: none;
-
-      align-items: center;
-      justify-content: center;
-
-      z-index: 5000;
-
-      background:
-        rgba(0,0,0,.5);
-    }
-
-    #winPanel {
-      width:
-        min(360px, 82%);
-
-      padding: 28px 18px;
-
-      border-radius: 20px;
-
-      border:
-        2px solid
-        #ecc23d;
-
-      background:
-        rgba(8,48,29,.96);
-
-      box-shadow:
-        0 14px 35px rgba(0,0,0,.65);
-    }
-
-    #winPanel h2 {
-      margin: 0;
-
-      color: #ecc23d;
-
-      font-size: 31px;
-      letter-spacing: 2px;
-    }
-
-    #winPanel p {
-      margin:
-        10px 0 18px;
-    }
-
-    #playAgainButton {
-      position: static;
-
-      background: #ecc23d;
-      color: #181307;
-    }
-
-    .confetti {
-      position: absolute;
-
-      width: 8px;
-      height: 13px;
-
-      top: -20px;
-
-      z-index: 6000;
-
-      pointer-events: none;
-
-      animation:
-        fall linear forwards;
-    }
-
-    @keyframes fall {
-      to {
-        transform:
-          translateY(550px)
-          rotate(720deg);
-
-        opacity: 0;
-      }
-    }
-
-    /* ========================================= */
-    /* DEAL ANIMATION                            */
-    /* ========================================= */
+    /* ===================================== */
+    /* DEAL ANIMATION                        */
+    /* ===================================== */
 
     .dealCard {
       position: absolute;
 
-      width: 67px;
-      height: 98px;
+      width: 74px;
+      height: 108px;
 
-      border-radius: 7px;
-
+      border-radius: 8px;
       border: 5px solid white;
 
       z-index: 1000;
@@ -892,8 +383,8 @@
 
         repeating-linear-gradient(
           -45deg,
-          rgba(255,255,255,.10) 0px,
-          rgba(255,255,255,.10) 2px,
+          rgba(255,255,255,.11) 0px,
+          rgba(255,255,255,.11) 2px,
           transparent 2px,
           transparent 5px
         ),
@@ -901,299 +392,670 @@
         #193f8f;
 
       box-shadow:
-        0 7px 14px rgba(0,0,0,.5);
+        0 7px 15px rgba(0,0,0,.55);
 
       transition:
-        left .27s ease,
-        top .27s ease,
-        transform .27s ease;
+        left .32s ease,
+        top .32s ease,
+        transform .32s ease;
     }
 
     .discarding {
       opacity: 0;
 
       transform:
-        translateY(175px)
+        translateY(190px)
         rotate(18deg)
         scale(.65) !important;
     }
 
-    /* ========================================= */
-    /* PHONE PORTRAIT                            */
-    /* ========================================= */
+    /* ===================================== */
+    /* BURIED STACK                          */
+    /* ===================================== */
 
-    @media
-    (max-width: 600px)
-    and (orientation: portrait) {
+    #buriedStack {
+      position: absolute;
 
-      html,
-      body {
-        height: 100%;
-        overflow: hidden;
+      left: 11px;
+      top: 122px;
+
+      width: 85px;
+      height: 115px;
+
+      display: none;
+
+      z-index: 500;
+
+      cursor: pointer;
+    }
+
+    .buriedCard {
+      position: absolute;
+
+      width: 70px;
+      height: 103px;
+
+      border-radius: 7px;
+
+      border: 1px solid #aaa;
+
+      background: white;
+
+      box-shadow:
+        0 3px 7px rgba(0,0,0,.45);
+    }
+
+    .buriedCard:nth-child(1) {
+      left: 0;
+      top: 7px;
+      transform: rotate(-7deg);
+    }
+
+    .buriedCard:nth-child(2) {
+      left: 4px;
+      top: 4px;
+      transform: rotate(4deg);
+    }
+
+    .buriedCard:nth-child(3) {
+      left: 8px;
+      top: 1px;
+      transform: rotate(-2deg);
+    }
+
+    #buriedCount {
+      position: absolute;
+
+      right: -2px;
+      top: -7px;
+
+      min-width: 29px;
+      height: 29px;
+
+      padding: 5px 6px;
+
+      border-radius: 20px;
+
+      background: #e7bb38;
+      color: #181307;
+
+      font-weight: bold;
+      font-size: 13px;
+
+      z-index: 20;
+
+      box-shadow:
+        0 3px 6px rgba(0,0,0,.4);
+    }
+
+    #buriedLabel {
+      position: absolute;
+
+      top: 115px;
+      left: -3px;
+
+      width: 90px;
+
+      font-size: 10px;
+
+      color:
+        rgba(255,255,255,.82);
+    }
+
+    /* ===================================== */
+    /* DECK                                  */
+    /* ===================================== */
+
+    #deckArea {
+      position: absolute;
+
+      left: 50%;
+      bottom: 24px;
+
+      transform:
+        translateX(-50%);
+
+      width: 105px;
+
+      z-index: 50;
+
+      cursor: pointer;
+    }
+
+    #deck {
+      position: relative;
+
+      width: 78px;
+      height: 111px;
+
+      margin: auto;
+
+      transition:
+        transform .1s ease;
+    }
+
+    #deckArea:active #deck {
+      transform:
+        translateY(3px)
+        scale(.98);
+    }
+
+    .deckLayer {
+      position: absolute;
+
+      width: 74px;
+      height: 107px;
+
+      border-radius: 8px;
+
+      border: 1px solid #ddd;
+
+      background: white;
+    }
+
+    .deckLayer.one {
+      left: -6px;
+      top: 6px;
+    }
+
+    .deckLayer.two {
+      left: -3px;
+      top: 3px;
+    }
+
+    #deckBack {
+      position: absolute;
+
+      left: 0;
+      top: 0;
+
+      width: 74px;
+      height: 107px;
+
+      border-radius: 8px;
+
+      border: 5px solid white;
+
+      background:
+        repeating-linear-gradient(
+          45deg,
+          rgba(255,255,255,.18) 0px,
+          rgba(255,255,255,.18) 2px,
+          transparent 2px,
+          transparent 5px
+        ),
+
+        repeating-linear-gradient(
+          -45deg,
+          rgba(255,255,255,.1) 0px,
+          rgba(255,255,255,.1) 2px,
+          transparent 2px,
+          transparent 5px
+        ),
+
+        #193f8f;
+
+      box-shadow:
+        0 7px 12px rgba(0,0,0,.55);
+    }
+
+    #deckBack::after {
+      content: "";
+
+      position: absolute;
+      inset: 6px;
+
+      border:
+        2px solid
+        rgba(255,255,255,.72);
+
+      border-radius: 3px;
+    }
+
+    #deckCount {
+      margin-top: 7px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    #tapDeck {
+      margin-top: 2px;
+      font-size: 10px;
+      opacity: .75;
+    }
+
+    #deckArea.empty {
+      opacity: .28;
+      cursor: default;
+    }
+
+    /* ===================================== */
+    /* DISCARD PILE                          */
+    /* ===================================== */
+
+    #discardArea {
+      position: absolute;
+
+      right: 44px;
+      bottom: 28px;
+
+      width: 100px;
+      height: 130px;
+
+      z-index: 45;
+    }
+
+    #discardPile {
+      position: relative;
+
+      width: 72px;
+      height: 104px;
+
+      margin: auto;
+    }
+
+    .discardPlaceholder {
+      position: absolute;
+
+      inset: 0;
+
+      border:
+        2px dashed
+        rgba(255,255,255,.22);
+
+      border-radius: 7px;
+    }
+
+    .discardCard {
+      position: absolute;
+
+      width: 60px;
+      height: 87px;
+
+      left: 6px;
+      top: 7px;
+
+      border-radius: 6px;
+
+      border: 1px solid #999;
+
+      background:
+        linear-gradient(
+          135deg,
+          #fff,
+          #efefef
+        );
+
+      color: #111;
+
+      box-shadow:
+        0 3px 7px rgba(0,0,0,.4);
+
+      overflow: hidden;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      transform-origin:
+        center center;
+    }
+
+    .discardCard.red {
+      color: #c51f2c;
+    }
+
+    .discardCard .miniRank {
+      position: absolute;
+
+      top: 4px;
+      left: 5px;
+
+      font-size: 16px;
+      font-weight: bold;
+
+      line-height: .8;
+    }
+
+    .discardCard .miniSuit {
+      position: absolute;
+
+      top: 21px;
+      left: 6px;
+
+      font-size: 14px;
+    }
+
+    .discardCard .miniCenter {
+      position: absolute;
+
+      left: 50%;
+      top: 53%;
+
+      transform:
+        translate(-50%, -50%);
+
+      font-size: 28px;
+    }
+
+    #discardLabel {
+      margin-top: 5px;
+      font-size: 10px;
+      opacity: .75;
+    }
+
+    /* ===================================== */
+    /* BUTTONS                               */
+    /* ===================================== */
+
+    button {
+      border: 0;
+
+      border-radius: 9px;
+
+      width: 118px;
+
+      padding: 9px 6px;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 3px 6px rgba(0,0,0,.35);
+    }
+
+    button:active {
+      transform:
+        translateY(2px);
+    }
+
+    #discardButton {
+      position: absolute;
+
+      left: 50%;
+      bottom: 169px;
+
+      transform:
+        translateX(-50%);
+
+      z-index: 75;
+
+      background: #e7ba36;
+      color: #201807;
+    }
+
+    #discardButton:active {
+      transform:
+        translateX(-50%)
+        translateY(2px);
+    }
+
+    #newGameButton {
+      position: absolute;
+
+      left: 40px;
+      bottom: 42px;
+
+      z-index: 60;
+
+      background: #f1f1f1;
+      color: #202020;
+    }
+
+    /* ===================================== */
+    /* INSTRUCTIONS                          */
+    /* ===================================== */
+
+    #instructions {
+      position: absolute;
+
+      left: 40px;
+      bottom: 104px;
+
+      width: 125px;
+
+      text-align: left;
+
+      font-size: 10px;
+      line-height: 1.25;
+
+      color:
+        rgba(255,255,255,.72);
+    }
+
+    /* ===================================== */
+    /* WIN                                   */
+    /* ===================================== */
+
+    #winOverlay {
+      position: absolute;
+
+      inset: 0;
+
+      display: none;
+
+      align-items: center;
+      justify-content: center;
+
+      z-index: 5000;
+
+      background:
+        rgba(0,0,0,.48);
+
+      backdrop-filter:
+        blur(2px);
+    }
+
+    #winPanel {
+      position: relative;
+
+      width:
+        min(390px, 82%);
+
+      padding: 32px 20px;
+
+      border-radius: 22px;
+
+      background:
+        rgba(10,48,29,.94);
+
+      border:
+        2px solid
+        rgba(240,198,60,.9);
+
+      box-shadow:
+        0 15px 40px rgba(0,0,0,.65);
+
+      animation:
+        winPop .45s ease-out;
+    }
+
+    #winPanel h2 {
+      margin: 0;
+
+      font-size: 34px;
+
+      color: #f0c63c;
+
+      letter-spacing: 3px;
+    }
+
+    #winPanel p {
+      margin:
+        12px 0 20px;
+
+      font-size: 16px;
+    }
+
+    #playAgainButton {
+      position: static;
+      width: 118px;
+
+      background: #f0c63c;
+      color: #1b1607;
+
+      font-size: 13px;
+    }
+
+    @keyframes winPop {
+      from {
+        transform:
+          scale(.7);
+
+        opacity: 0;
       }
 
-      body {
-        min-height: 100dvh;
+      to {
+        transform:
+          scale(1);
+
+        opacity: 1;
       }
+    }
+
+    .confetti {
+      position: absolute;
+
+      width: 8px;
+      height: 14px;
+
+      top: -20px;
+
+      z-index: 6000;
+
+      pointer-events: none;
+
+      animation:
+        fall linear forwards;
+    }
+
+    @keyframes fall {
+      0% {
+        transform:
+          translateY(0)
+          rotate(0deg);
+
+        opacity: 1;
+      }
+
+      100% {
+        transform:
+          translateY(520px)
+          rotate(720deg);
+
+        opacity: 0;
+      }
+    }
+
+    /* ===================================== */
+    /* MOBILE                                */
+    /* ===================================== */
+
+    @media (max-width: 600px) {
 
       #game {
-        height: 100dvh;
-
-        display: flex;
-        flex-direction: column;
-
-        overflow: hidden;
-
-        padding:
-          max(3px, env(safe-area-inset-top))
-          3px
-          max(3px, env(safe-area-inset-bottom));
+        padding-left: 4px;
+        padding-right: 4px;
       }
 
       #title {
-        flex: 0 0 auto;
-
-        font-size: 31px;
-
-        line-height: 34px;
-
-        letter-spacing: 7px;
+        font-size: 36px;
+        letter-spacing: 8px;
       }
 
       #stats {
-        flex: 0 0 auto;
-
-        gap: 9px;
-
-        font-size: 11px;
-      }
-
-      #stats strong {
+        gap: 12px;
         font-size: 12px;
       }
 
-      #message {
-        flex: 0 0 19px;
-
-        height: 19px;
-
-        font-size: 11px;
-
-        line-height: 1;
-      }
-
-      #tableOuter {
-        flex: 1 1 auto;
-
-        min-height: 0;
-
-        margin-top: 1px;
-
-        padding: 5px;
-
-        border-width: 2px;
-
-        border-radius: 39px;
-      }
-
-      #tableRail {
-        height: 100%;
-
-        padding: 4px;
-
-        border-radius: 34px;
-      }
-
-      #tableFelt {
-        height: 100%;
-
-        min-height: 0;
-
-        border-radius: 30px;
-      }
-
-      #tableFelt::before {
-        inset: 9px;
-
-        border-radius: 22px;
-      }
-
-      #feltLogo {
-        top: 51%;
-
-        font-size: 37px;
-
-        letter-spacing: 9px;
-      }
-
-      /*
-        The hand stays inside the white
-        inner border.
-      */
-
-      #handArea {
-        left: 13px;
-        right: 13px;
-        top: 10px;
-
-        height: 178px;
-      }
-
-      #playArea {
-        height: 170px;
-      }
-
-      .playingCard {
-        width: 59px;
-        height: 87px;
-
-        border-radius: 6px;
-      }
-
-      .cardCorner {
-        top: 4px;
-        left: 3px;
-
-        width: 21px;
-      }
-
-      .bottomCorner {
-        right: 3px;
-        bottom: 4px;
-
-        width: 21px;
-      }
-
-      .cardRank {
-        font-size: 16px;
-      }
-
-      .cardSuit {
-        margin-top: 4px;
-
-        font-size: 14px;
-      }
-
-      .centerSuit {
-        font-size: 26px;
-      }
-
-      .playingCard.selected {
-        --lift: -23px;
-      }
-
-      #buriedStack {
-        left: 1px;
-        top: 57px;
-
-        width: 50px;
-      }
-
-      .buriedCard {
-        width: 46px;
-        height: 70px;
-      }
-
-      #buriedLabel {
-        top: 74px;
-
-        width: 60px;
-
-        font-size: 8px;
-      }
-
-      #buriedCount {
-        min-width: 24px;
-        height: 24px;
-
-        padding: 4px;
-
-        font-size: 10px;
-      }
-
-      #discardButton {
-        top: 188px;
-      }
-
-      button {
-        width: 96px;
-        height: 31px;
-
-        font-size: 10px;
-      }
-
-      #deckArea {
-        bottom: 13px;
-
-        width: 78px;
-      }
-
-      #deck {
-        width: 62px;
-        height: 90px;
-      }
-
-      .deckLayer,
-      #deckBack {
-        width: 60px;
-        height: 87px;
-      }
-
-      #deckCount {
-        margin-top: 3px;
-
-        font-size: 10px;
-      }
-
-      #tapDeck {
-        font-size: 8px;
-      }
-
-      #newGameButton {
-        left: 18px;
-        bottom: 25px;
-      }
-
-      #discardArea {
-        right: 13px;
-        bottom: 17px;
-
-        width: 72px;
-        height: 103px;
-      }
-
-      #discardPile {
-        width: 62px;
-        height: 80px;
-      }
-
-      .discardPlaceholder,
-      .discardCard {
-        width: 50px;
-        height: 73px;
-      }
-
-      .miniRank {
+      #stats strong {
         font-size: 13px;
       }
 
-      .miniSuit {
-        top: 16px;
-
-        font-size: 11px;
+      #message {
+        font-size: 13px;
       }
 
-      .miniCenter {
-        font-size: 21px;
+      #tableOuter {
+        padding: 7px;
+        border-radius: 48px;
       }
 
-      #discardLabel {
-        font-size: 8px;
+      #tableRail {
+        padding: 5px;
+        border-radius: 42px;
+      }
+
+      #tableFelt {
+        height: 500px;
+        border-radius: 37px;
+      }
+
+      #tableFelt::before {
+        inset: 10px;
+        border-radius: 29px;
+      }
+
+      #handArea {
+        left: 8px;
+        right: 8px;
+        top: 13px;
+      }
+
+      .playingCard {
+        width: 66px;
+        height: 97px;
       }
 
       .dealCard {
-        width: 59px;
-        height: 87px;
+        width: 66px;
+        height: 97px;
+      }
+
+      .cardRank {
+        font-size: 18px;
+      }
+
+      .cardSuit {
+        font-size: 15px;
+      }
+
+      .centerSuit {
+        font-size: 29px;
+      }
+
+      button {
+        width: 106px;
+        padding: 8px 4px;
+        font-size: 11px;
+      }
+
+      #discardButton {
+        bottom: 166px;
+      }
+
+      #newGameButton {
+        left: 17px;
+        bottom: 43px;
+      }
+
+      #instructions {
+        left: 17px;
+        bottom: 99px;
+
+        width: 103px;
+      }
+
+      #discardArea {
+        right: 12px;
+        bottom: 28px;
+      }
+
+      #deckArea {
+        bottom: 24px;
       }
     }
 
@@ -1221,7 +1083,7 @@
       </div>
 
       <div>
-        Hand:
+        In Hand:
         <strong id="inHand">0</strong>
       </div>
 
@@ -1261,6 +1123,10 @@
 
           </div>
 
+          <div id="instructions">
+            Tap or drag across cards to select them.
+          </div>
+
           <button id="discardButton">
             Discard Selected
           </button>
@@ -1284,7 +1150,7 @@
             </div>
 
             <div id="tapDeck">
-              Tap to flip
+              Tap deck to flip
             </div>
 
           </div>
@@ -1301,7 +1167,7 @@
             </div>
 
             <div id="discardLabel">
-              Discards
+              Discard pile
             </div>
 
           </div>
@@ -1336,25 +1202,28 @@
 
   <script>
 
-    const suits =
-      ["♠", "♥", "♦", "♣"];
+    const suits = [
+      "♠",
+      "♥",
+      "♦",
+      "♣"
+    ];
 
-    const ranks =
-      [
-        "A",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9",
-        "10",
-        "J",
-        "Q",
-        "K"
-      ];
+    const ranks = [
+      "A",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "J",
+      "Q",
+      "K"
+    ];
 
     let deck = [];
 
@@ -1374,6 +1243,8 @@
 
     let dragSelectionMode = true;
 
+    let dragVisited = new Set();
+
     let lastDragIndex = null;
 
     /* ===================================== */
@@ -1386,11 +1257,10 @@
 
       if (!audioContext) {
 
-        audioContext =
-          new (
-            window.AudioContext ||
-            window.webkitAudioContext
-          )();
+        audioContext = new (
+          window.AudioContext ||
+          window.webkitAudioContext
+        )();
 
       }
 
@@ -1426,13 +1296,15 @@
         );
 
         gain.gain.exponentialRampToValueAtTime(
-          .001,
+          0.001,
           ctx.currentTime + duration
         );
 
         oscillator.connect(gain);
 
-        gain.connect(ctx.destination);
+        gain.connect(
+          ctx.destination
+        );
 
         oscillator.start();
 
@@ -1444,10 +1316,11 @@
 
       catch (error) {
       }
+
     }
 
     function selectionSound() {
-      playTone(480, .05, .03);
+      playTone(480, .055, .035);
     }
 
     function dealSound() {
@@ -1455,40 +1328,26 @@
     }
 
     function discardSound() {
-      playTone(170, .13, .05);
+      playTone(170, .14, .055);
     }
 
     function winSound() {
 
       setTimeout(
-        () =>
-          playTone(
-            523,
-            .18,
-            .05
-          ),
+        () => playTone(523, .18, .05),
         0
       );
 
       setTimeout(
-        () =>
-          playTone(
-            659,
-            .18,
-            .05
-          ),
+        () => playTone(659, .18, .05),
         150
       );
 
       setTimeout(
-        () =>
-          playTone(
-            784,
-            .35,
-            .06
-          ),
+        () => playTone(784, .35, .06),
         300
       );
+
     }
 
     /* ===================================== */
@@ -1512,12 +1371,13 @@
         [
           array[i],
           array[j]
-        ] =
-        [
+        ] = [
           array[j],
           array[i]
         ];
+
       }
+
     }
 
     function validateDeck() {
@@ -1561,1491 +1421,4 @@
 
       lastDragIndex = null;
 
-      for (
-        const suit of suits
-      ) {
-
-        for (
-          const rank of ranks
-        ) {
-
-          deck.push({
-            suit,
-            rank
-          });
-        }
-      }
-
-      if (!validateDeck()) {
-
-        showMessage(
-          "Deck error."
-        );
-
-        return;
-      }
-
-      shuffle(deck);
-
-      document
-        .getElementById(
-          "winOverlay"
-        )
-        .style.display =
-        "none";
-
-      showMessage("");
-
-      updateStats();
-
-      updateDeck();
-
-      renderCards();
-
-      renderDiscardPile();
-
-      shuffleDeckAnimation();
-    }
-
-    function shuffleDeckAnimation() {
-
-      document
-        .getElementById("deck")
-        .animate(
-          [
-            {
-              transform:
-                "translateX(0)"
-            },
-
-            {
-              transform:
-                "translateX(-7px) rotate(-4deg)"
-            },
-
-            {
-              transform:
-                "translateX(7px) rotate(4deg)"
-            },
-
-            {
-              transform:
-                "translateX(-5px) rotate(-3deg)"
-            },
-
-            {
-              transform:
-                "translateX(5px) rotate(3deg)"
-            },
-
-            {
-              transform:
-                "translateX(0)"
-            }
-          ],
-
-          {
-            duration: 420
-          }
-        );
-    }
-
-    /* ===================================== */
-    /* DEAL                                  */
-    /* ===================================== */
-
-    function flipCard() {
-
-      if (
-        isAnimating ||
-        deck.length === 0
-      ) {
-
-        if (
-          deck.length === 0
-        ) {
-
-          showMessage(
-            "The deck is empty."
-          );
-        }
-
-        return;
-      }
-
-      isAnimating = true;
-
-      selectedIndexes = [];
-
-      showAllCards = false;
-
-      const card =
-        deck.pop();
-
-      const table =
-        document.getElementById(
-          "tableFelt"
-        );
-
-      const deckArea =
-        document.getElementById(
-          "deckArea"
-        );
-
-      const tableRect =
-        table.getBoundingClientRect();
-
-      const deckRect =
-        deckArea.getBoundingClientRect();
-
-      const flyingCard =
-        document.createElement(
-          "div"
-        );
-
-      flyingCard.className =
-        "dealCard";
-
-      flyingCard.style.left =
-        (
-          deckRect.left -
-          tableRect.left +
-          12
-        ) + "px";
-
-      flyingCard.style.top =
-        (
-          deckRect.top -
-          tableRect.top
-        ) + "px";
-
-      table.appendChild(
-        flyingCard
-      );
-
-      dealSound();
-
-      requestAnimationFrame(
-        function() {
-
-          flyingCard.style.left =
-            "50%";
-
-          flyingCard.style.top =
-            "72px";
-
-          flyingCard.style.transform =
-            "translateX(-50%) rotateY(180deg)";
-        }
-      );
-
-      setTimeout(
-        function() {
-
-          faceUpCards.push(card);
-
-          flyingCard.remove();
-
-          updateStats();
-
-          updateDeck();
-
-          renderCards();
-
-          isAnimating = false;
-
-          if (
-            deck.length === 0
-          ) {
-
-            showMessage(
-              "Deck empty — make any final discards."
-            );
-          }
-
-        },
-        280
-      );
-    }
-
-    /* ===================================== */
-    /* DRAG SELECTION                        */
-    /* ===================================== */
-
-    function startDrag(
-      event,
-      index
-    ) {
-
-      if (isAnimating) {
-        return;
-      }
-
-      event.preventDefault();
-
-      isDragging = true;
-
-      lastDragIndex = index;
-
-      dragSelectionMode =
-        !selectedIndexes.includes(
-          index
-        );
-
-      applyDragSelection(
-        index
-      );
-
-      renderCards();
-    }
-
-    function applyDragSelection(
-      index
-    ) {
-
-      const selected =
-        selectedIndexes.includes(
-          index
-        );
-
-      if (
-        dragSelectionMode &&
-        !selected
-      ) {
-
-        selectedIndexes.push(
-          index
-        );
-
-        selectionSound();
-      }
-
-      if (
-        !dragSelectionMode &&
-        selected
-      ) {
-
-        selectedIndexes =
-          selectedIndexes.filter(
-            item =>
-              item !== index
-          );
-
-        selectionSound();
-      }
-
-      selectedIndexes.sort(
-        (a,b) =>
-          a - b
-      );
-    }
-
-    function continueDrag(
-      event
-    ) {
-
-      if (!isDragging) {
-        return;
-      }
-
-      event.preventDefault();
-
-      const element =
-        document.elementFromPoint(
-          event.clientX,
-          event.clientY
-        );
-
-      if (!element) {
-        return;
-      }
-
-      const card =
-        element.closest(
-          ".playingCard"
-        );
-
-      if (!card) {
-        return;
-      }
-
-      const currentIndex =
-        Number(
-          card.dataset.index
-        );
-
-      if (
-        currentIndex ===
-        lastDragIndex
-      ) {
-
-        return;
-      }
-
-      /*
-        Fill every card crossed between
-        the previous position and the
-        current position.
-
-        This prevents fast swipes from
-        skipping middle cards.
-      */
-
-      const low =
-        Math.min(
-          lastDragIndex,
-          currentIndex
-        );
-
-      const high =
-        Math.max(
-          lastDragIndex,
-          currentIndex
-        );
-
-      for (
-        let index = low;
-        index <= high;
-        index++
-      ) {
-
-        applyDragSelection(
-          index
-        );
-      }
-
-      lastDragIndex =
-        currentIndex;
-
-      renderCards();
-    }
-
-    function endDrag() {
-
-      isDragging = false;
-
-      lastDragIndex = null;
-    }
-
-    /* ===================================== */
-    /* DISCARD RULES                         */
-    /* ===================================== */
-
-    function discardSelected() {
-
-      if (isAnimating) {
-        return;
-      }
-
-      if (
-        selectedIndexes.length === 0
-      ) {
-
-        showMessage(
-          "Select cards first."
-        );
-
-        return;
-      }
-
-      /*
-        SAME SUIT
-
-        The selected cards are the two
-        middle cards.
-      */
-
-      if (
-        selectedIndexes.length === 2
-      ) {
-
-        const first =
-          selectedIndexes[0];
-
-        const second =
-          selectedIndexes[1];
-
-        if (
-          second !==
-          first + 1
-        ) {
-
-          invalidMove();
-
-          return;
-        }
-
-        const left =
-          first - 1;
-
-        const right =
-          second + 1;
-
-        if (
-          left < 0 ||
-          right >=
-          faceUpCards.length
-        ) {
-
-          invalidMove();
-
-          return;
-        }
-
-        if (
-          faceUpCards[left].suit ===
-          faceUpCards[right].suit
-        ) {
-
-          animateDiscard(
-            [...selectedIndexes],
-            "Same suit — middle two discarded!"
-          );
-
-          return;
-        }
-      }
-
-      /*
-        SAME RANK
-
-        All four consecutive cards
-        are selected.
-      */
-
-      if (
-        selectedIndexes.length === 4
-      ) {
-
-        const [
-          a,
-          b,
-          c,
-          d
-        ] =
-          selectedIndexes;
-
-        if (
-          b !== a + 1 ||
-          c !== a + 2 ||
-          d !== a + 3
-        ) {
-
-          invalidMove();
-
-          return;
-        }
-
-        if (
-          faceUpCards[a].rank ===
-          faceUpCards[d].rank
-        ) {
-
-          animateDiscard(
-            [...selectedIndexes],
-            "Same rank — all four discarded!"
-          );
-
-          return;
-        }
-      }
-
-      invalidMove();
-    }
-
-    function invalidMove() {
-
-      showMessage(
-        "That isn't a valid discard."
-      );
-
-      document
-        .getElementById(
-          "discardButton"
-        )
-        .animate(
-          [
-            {
-              transform:
-                "translateX(-50%) translateX(0)"
-            },
-
-            {
-              transform:
-                "translateX(-50%) translateX(-4px)"
-            },
-
-            {
-              transform:
-                "translateX(-50%) translateX(4px)"
-            },
-
-            {
-              transform:
-                "translateX(-50%) translateX(0)"
-            }
-          ],
-
-          {
-            duration: 180
-          }
-        );
-    }
-
-    /* ===================================== */
-    /* DISCARD ANIMATION                     */
-    /* ===================================== */
-
-    function animateDiscard(
-      indexes,
-      message
-    ) {
-
-      isAnimating = true;
-
-      discardSound();
-
-      document
-        .querySelectorAll(
-          ".playingCard"
-        )
-        .forEach(
-          card => {
-
-            const index =
-              Number(
-                card.dataset.index
-              );
-
-            if (
-              indexes.includes(
-                index
-              )
-            ) {
-
-              card.classList.add(
-                "discarding"
-              );
-            }
-          }
-        );
-
-      setTimeout(
-        function() {
-
-          /*
-            Save actual discarded cards
-            before removing them from hand.
-          */
-
-          const removedCards =
-            indexes.map(
-              index =>
-                faceUpCards[index]
-            );
-
-          discardedCards.push(
-            ...removedCards
-          );
-
-          const descending =
-            [...indexes].sort(
-              (a,b) =>
-                b - a
-            );
-
-          for (
-            const index of descending
-          ) {
-
-            faceUpCards.splice(
-              index,
-              1
-            );
-          }
-
-          discardedCount +=
-            indexes.length;
-
-          selectedIndexes = [];
-
-          showAllCards = false;
-
-          showMessage(message);
-
-          updateStats();
-
-          renderCards();
-
-          renderDiscardPile();
-
-          isAnimating = false;
-
-          checkForWin();
-
-        },
-        250
-      );
-    }
-
-    /* ===================================== */
-    /* DISCARD PILE                          */
-    /* ===================================== */
-
-    function renderDiscardPile() {
-
-      const pile =
-        document.getElementById(
-          "discardPile"
-        );
-
-      pile.innerHTML = "";
-
-      if (
-        discardedCards.length === 0
-      ) {
-
-        const placeholder =
-          document.createElement(
-            "div"
-          );
-
-        placeholder.className =
-          "discardPlaceholder";
-
-        pile.appendChild(
-          placeholder
-        );
-
-        return;
-      }
-
-      /*
-        Only render the newest six cards.
-        Older cards are conceptually
-        underneath them.
-      */
-
-      const visible =
-        discardedCards.slice(-6);
-
-      const rotations =
-        [
-          -13,
-          8,
-          -5,
-          12,
-          -8,
-          5
-        ];
-
-      const offsets =
-        [
-          [-5,4],
-          [5,1],
-          [-2,-2],
-          [6,5],
-          [-6,1],
-          [1,-4]
-        ];
-
-      visible.forEach(
-        function(
-          card,
-          index
-        ) {
-
-          const div =
-            document.createElement(
-              "div"
-            );
-
-          div.className =
-            "discardCard";
-
-          if (
-            card.suit === "♥" ||
-            card.suit === "♦"
-          ) {
-
-            div.classList.add(
-              "red"
-            );
-          }
-
-          const rotation =
-            rotations[
-              index %
-              rotations.length
-            ];
-
-          const offset =
-            offsets[
-              index %
-              offsets.length
-            ];
-
-          div.style.transform =
-            "translate(" +
-            offset[0] +
-            "px," +
-            offset[1] +
-            "px) rotate(" +
-            rotation +
-            "deg)";
-
-          div.style.zIndex =
-            index + 1;
-
-          const rank =
-            document.createElement(
-              "div"
-            );
-
-          rank.className =
-            "miniRank";
-
-          rank.textContent =
-            card.rank;
-
-          const suit =
-            document.createElement(
-              "div"
-            );
-
-          suit.className =
-            "miniSuit";
-
-          suit.textContent =
-            card.suit;
-
-          const center =
-            document.createElement(
-              "div"
-            );
-
-          center.className =
-            "miniCenter";
-
-          center.textContent =
-            card.suit;
-
-          div.appendChild(rank);
-
-          div.appendChild(suit);
-
-          div.appendChild(center);
-
-          pile.appendChild(div);
-        }
-      );
-    }
-
-    /* ===================================== */
-    /* WIN                                   */
-    /* ===================================== */
-
-    function checkForWin() {
-
-      if (
-        deck.length === 0 &&
-        faceUpCards.length === 0 &&
-        discardedCount === 52
-      ) {
-
-        winGame();
-      }
-    }
-
-    function winGame() {
-
-      winSound();
-
-      document
-        .getElementById(
-          "winOverlay"
-        )
-        .style.display =
-        "flex";
-
-      createConfetti();
-    }
-
-    function createConfetti() {
-
-      const table =
-        document.getElementById(
-          "tableFelt"
-        );
-
-      const colors =
-        [
-          "#f0c63c",
-          "#ffffff",
-          "#d33a3a",
-          "#3aa9d3",
-          "#65d37d"
-        ];
-
-      for (
-        let i = 0;
-        i < 60;
-        i++
-      ) {
-
-        const piece =
-          document.createElement(
-            "div"
-          );
-
-        piece.className =
-          "confetti";
-
-        piece.style.left =
-          (
-            Math.random() *
-            100
-          ) + "%";
-
-        piece.style.background =
-          colors[
-            Math.floor(
-              Math.random() *
-              colors.length
-            )
-          ];
-
-        piece.style.animationDuration =
-          (
-            1.7 +
-            Math.random() *
-            1.8
-          ) + "s";
-
-        table.appendChild(
-          piece
-        );
-
-        setTimeout(
-          () =>
-            piece.remove(),
-          4000
-        );
-      }
-    }
-
-    /* ===================================== */
-    /* UI                                    */
-    /* ===================================== */
-
-    function showMessage(text) {
-
-      document
-        .getElementById(
-          "message"
-        )
-        .textContent =
-        text;
-    }
-
-    function updateStats() {
-
-      document
-        .getElementById(
-          "remaining"
-        )
-        .textContent =
-        deck.length;
-
-      document
-        .getElementById(
-          "discarded"
-        )
-        .textContent =
-        discardedCount;
-
-      document
-        .getElementById(
-          "inHand"
-        )
-        .textContent =
-        faceUpCards.length;
-    }
-
-    function updateDeck() {
-
-      document
-        .getElementById(
-          "deckCount"
-        )
-        .textContent =
-        deck.length +
-        (
-          deck.length === 1
-          ? " card"
-          : " cards"
-        );
-
-      document
-        .getElementById(
-          "deckArea"
-        )
-        .classList.toggle(
-          "empty",
-          deck.length === 0
-        );
-    }
-
-    /* ===================================== */
-    /* CARD HTML                             */
-    /* ===================================== */
-
-    function createCorner(
-      card,
-      bottom
-    ) {
-
-      const corner =
-        document.createElement(
-          "div"
-        );
-
-      corner.className =
-        bottom
-        ? "bottomCorner"
-        : "cardCorner";
-
-      const rank =
-        document.createElement(
-          "div"
-        );
-
-      rank.className =
-        "cardRank";
-
-      rank.textContent =
-        card.rank;
-
-      const suit =
-        document.createElement(
-          "div"
-        );
-
-      suit.className =
-        "cardSuit";
-
-      suit.textContent =
-        card.suit;
-
-      corner.appendChild(rank);
-
-      corner.appendChild(suit);
-
-      return corner;
-    }
-
-    /* ===================================== */
-    /* LAYOUT                                */
-    /* ===================================== */
-
-    function isPhonePortrait() {
-
-      return (
-        window.innerWidth <= 600 &&
-        window.innerHeight >
-        window.innerWidth
-      );
-    }
-
-    function getLayoutInfo() {
-
-      const area =
-        document.getElementById(
-          "playArea"
-        );
-
-      const portrait =
-        isPhonePortrait();
-
-      return {
-
-        width:
-          area.clientWidth,
-
-        cardWidth:
-          portrait
-          ? 59
-          : 72,
-
-        /*
-          PHONE PORTRAIT:
-          start hiding after 9 cards.
-
-          Other layouts:
-          start hiding after 11.
-        */
-
-        maxVisible:
-          portrait
-          ? 9
-          : 11
-
-      };
-    }
-
-    /* ===================================== */
-    /* RENDER HAND                           */
-    /* ===================================== */
-
-    function renderCards() {
-
-      const playArea =
-        document.getElementById(
-          "playArea"
-        );
-
-      const buried =
-        document.getElementById(
-          "buriedStack"
-        );
-
-      const buriedCount =
-        document.getElementById(
-          "buriedCount"
-        );
-
-      playArea.innerHTML = "";
-
-      const count =
-        faceUpCards.length;
-
-      if (
-        count === 0
-      ) {
-
-        buried.style.display =
-          "none";
-
-        return;
-      }
-
-      const layout =
-        getLayoutInfo();
-
-      let startIndex = 0;
-
-      let hiddenCount = 0;
-
-      if (
-        !showAllCards &&
-        count >
-        layout.maxVisible
-      ) {
-
-        hiddenCount =
-          count -
-          layout.maxVisible;
-
-        startIndex =
-          hiddenCount;
-      }
-
-      const visible =
-        faceUpCards.slice(
-          startIndex
-        );
-
-      /*
-        We deliberately calculate spacing
-        from the ACTUAL available hand width,
-        with extra padding so rotation cannot
-        push cards beyond the white line.
-      */
-
-      const innerPadding =
-        isPhonePortrait()
-        ? 12
-        : 16;
-
-      let spacing;
-
-      if (showAllCards) {
-
-        spacing =
-          (
-            layout.width -
-            layout.cardWidth -
-            innerPadding * 2
-          )
-          /
-          Math.max(
-            visible.length - 1,
-            1
-          );
-
-        spacing =
-          Math.max(
-            7,
-            spacing
-          );
-
-      }
-
-      else {
-
-        spacing =
-          (
-            layout.width -
-            layout.cardWidth -
-            innerPadding * 2
-          )
-          /
-          Math.max(
-            visible.length - 1,
-            1
-          );
-
-        spacing =
-          Math.min(
-            isPhonePortrait()
-            ? 34
-            : 44,
-
-            Math.max(
-              25,
-              spacing
-            )
-          );
-      }
-
-      const totalWidth =
-        layout.cardWidth +
-        spacing *
-        Math.max(
-          visible.length - 1,
-          0
-        );
-
-      const startX =
-        Math.max(
-          innerPadding,
-
-          (
-            layout.width -
-            totalWidth
-          ) / 2
-        );
-
-      visible.forEach(
-        function(
-          card,
-          visibleIndex
-        ) {
-
-          const actualIndex =
-            startIndex +
-            visibleIndex;
-
-          const div =
-            document.createElement(
-              "div"
-            );
-
-          div.className =
-            "playingCard";
-
-          div.dataset.index =
-            actualIndex;
-
-          if (
-            card.suit === "♥" ||
-            card.suit === "♦"
-          ) {
-
-            div.classList.add(
-              "red"
-            );
-          }
-
-          if (
-            selectedIndexes.includes(
-              actualIndex
-            )
-          ) {
-
-            div.classList.add(
-              "selected"
-            );
-          }
-
-          div.style.left =
-            (
-              startX +
-              visibleIndex *
-              spacing
-            ) + "px";
-
-          const middle =
-            (
-              visible.length -
-              1
-            ) / 2;
-
-          const normalized =
-            Math.abs(
-              visibleIndex -
-              middle
-            )
-            /
-            Math.max(
-              middle,
-              1
-            );
-
-          div.style.top =
-            (
-              isPhonePortrait()
-              ? 43
-              : 51
-            )
-            +
-            normalized *
-            (
-              isPhonePortrait()
-              ? 9
-              : 15
-            )
-            + "px";
-
-          const rotation =
-            visible.length === 1
-            ? 0
-            :
-            (
-              (
-                visibleIndex -
-                middle
-              )
-              /
-              Math.max(
-                middle,
-                1
-              )
-            )
-            *
-            (
-              isPhonePortrait()
-              ? 3.5
-              : 5.5
-            );
-
-          div.style.setProperty(
-            "--rotation",
-            rotation + "deg"
-          );
-
-          div.style.zIndex =
-            100 +
-            visibleIndex;
-
-          div.appendChild(
-            createCorner(
-              card,
-              false
-            )
-          );
-
-          const center =
-            document.createElement(
-              "div"
-            );
-
-          center.className =
-            "centerSuit";
-
-          center.textContent =
-            card.suit;
-
-          div.appendChild(center);
-
-          div.appendChild(
-            createCorner(
-              card,
-              true
-            )
-          );
-
-          div.addEventListener(
-            "pointerdown",
-            function(event) {
-
-              startDrag(
-                event,
-                actualIndex
-              );
-            }
-          );
-
-          playArea.appendChild(div);
-        }
-      );
-
-      if (
-        hiddenCount > 0 &&
-        !showAllCards
-      ) {
-
-        buriedCount.textContent =
-          "+" +
-          hiddenCount;
-
-        buried.style.display =
-          "block";
-      }
-
-      else {
-
-        buried.style.display =
-          "none";
-      }
-    }
-
-    /* ===================================== */
-    /* BURIED CARDS                          */
-    /* ===================================== */
-
-    function toggleSpread(event) {
-
-      event.stopPropagation();
-
-      if (
-        faceUpCards.length <=
-        getLayoutInfo().maxVisible
-      ) {
-
-        return;
-      }
-
-      showAllCards =
-        !showAllCards;
-
-      selectedIndexes = [];
-
-      showMessage(
-        showAllCards
-        ? "Hand spread."
-        : ""
-      );
-
-      renderCards();
-    }
-
-    /* ===================================== */
-    /* DESELECT FELT                         */
-    /* ===================================== */
-
-    function deselectOnFelt(event) {
-
-      if (
-        event.target.closest(
-          ".playingCard, #deckArea, #discardButton, #newGameButton, #buriedStack, #discardArea, #winOverlay"
-        )
-      ) {
-
-        return;
-      }
-
-      if (
-        selectedIndexes.length > 0
-      ) {
-
-        selectedIndexes = [];
-
-        showMessage("");
-
-        renderCards();
-      }
-    }
-
-    /* ===================================== */
-    /* EVENTS                                */
-    /* ===================================== */
-
-    document.addEventListener(
-      "pointermove",
-      continueDrag,
-      {
-        passive: false
-      }
-    );
-
-    document.addEventListener(
-      "pointerup",
-      endDrag
-    );
-
-    document
-      .getElementById(
-        "tableFelt"
-      )
-      .addEventListener(
-        "pointerdown",
-        deselectOnFelt
-      );
-
-    document
-      .getElementById(
-        "deckArea"
-      )
-      .addEventListener(
-        "click",
-        flipCard
-      );
-
-    document
-      .getElementById(
-        "discardButton"
-      )
-      .addEventListener(
-        "click",
-        discardSelected
-      );
-
-    document
-      .getElementById(
-        "newGameButton"
-      )
-      .addEventListener(
-        "click",
-        newGame
-      );
-
-    document
-      .getElementById(
-        "playAgainButton"
-      )
-      .addEventListener(
-        "click",
-        newGame
-      );
-
-    document
-      .getElementById(
-        "buriedStack"
-      )
-      .addEventListener(
-        "click",
-        toggleSpread
-      );
-
-    window.addEventListener(
-      "resize",
-      renderCards
-    );
-
-    newGame();
-
-  </script>
-
-</body>
-</html>
+      drag
