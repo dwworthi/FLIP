@@ -1350,7 +1350,7 @@ function getLayoutInfo() {
 
   const maxVisible =
     phone
-    ? 8
+    ? 7
     : 11;
 
   return {
