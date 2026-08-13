@@ -1887,11 +1887,6 @@
           index
         );
 
-      /*
-        Immediately apply the selection
-        to the FIRST card touched.
-      */
-
       if (
         dragSelectionMode
       ) {
@@ -1986,13 +1981,6 @@
 
         return;
       }
-
-      /*
-        Fill every index between the
-        previous card and the current card.
-        Fast swipes therefore don't skip
-        cards in the middle.
-      */
 
       const low =
         Math.min(
@@ -2101,11 +2089,6 @@
         return;
       }
 
-      /*
-        SAME SUIT:
-        Select the middle two.
-      */
-
       if (
         selectedIndexes.length === 2
       ) {
@@ -2160,11 +2143,6 @@
         }
 
       }
-
-      /*
-        SAME RANK:
-        Select all four.
-      */
 
       if (
         selectedIndexes.length === 4
@@ -3122,11 +3100,6 @@
         "pointerdown",
 
         function(event) {
-
-          /*
-            Don't deselect when the user
-            touched an interactive element.
-          */
 
           if (
             event.target.closest(
