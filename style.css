@@ -43,9 +43,9 @@ body {
   margin: auto;
 
   padding:
-    max(10px, env(safe-area-inset-top))
+    max(8px, env(safe-area-inset-top))
     8px
-    max(20px, env(safe-area-inset-bottom));
+    max(12px, env(safe-area-inset-bottom));
 }
 
 #title {
@@ -214,11 +214,11 @@ body {
 #handArea {
   position: absolute;
 
-  left: 22px;
-  right: 22px;
+  left: 28px;
+  right: 28px;
   top: 15px;
 
-  height: 275px;
+  height: 220px;
 
   overflow: hidden;
 
@@ -229,7 +229,7 @@ body {
   position: relative;
 
   width: 100%;
-  height: 260px;
+  height: 210px;
 }
 
 /* ===================================== */
@@ -290,7 +290,7 @@ body {
 }
 
 .playingCard.selected {
-  --lift: -31px;
+  --lift: -26px;
 
   box-shadow:
     0 0 0 4px #f0c63c,
@@ -415,15 +415,11 @@ body {
     opacity .18s ease;
 }
 
-/* ===================================== */
-/* DISCARD ANIMATION                     */
-/* ===================================== */
-
 .discarding {
   opacity: 0;
 
   transform:
-    translateY(190px)
+    translateY(180px)
     rotate(18deg)
     scale(.65) !important;
 }
@@ -435,11 +431,11 @@ body {
 #buriedStack {
   position: absolute;
 
-  left: 11px;
-  top: 122px;
+  left: 2px;
+  top: 105px;
 
-  width: 85px;
-  height: 115px;
+  width: 72px;
+  height: 105px;
 
   display: none;
 
@@ -451,8 +447,8 @@ body {
 .buriedCard {
   position: absolute;
 
-  width: 70px;
-  height: 103px;
+  width: 61px;
+  height: 90px;
 
   border-radius: 7px;
 
@@ -488,8 +484,8 @@ body {
   right: -2px;
   top: -7px;
 
-  min-width: 29px;
-  height: 29px;
+  min-width: 27px;
+  height: 27px;
 
   padding: 5px 6px;
 
@@ -500,7 +496,7 @@ body {
   color: #181307;
 
   font-weight: bold;
-  font-size: 13px;
+  font-size: 12px;
 
   z-index: 20;
 
@@ -511,12 +507,12 @@ body {
 #buriedLabel {
   position: absolute;
 
-  top: 115px;
-  left: -3px;
+  top: 99px;
+  left: -4px;
 
-  width: 90px;
+  width: 82px;
 
-  font-size: 10px;
+  font-size: 9px;
 
   color:
     rgba(255,255,255,.82);
@@ -530,12 +526,12 @@ body {
   position: absolute;
 
   left: 50%;
-  bottom: 25px;
+  bottom: 24px;
 
   transform:
     translateX(-50%);
 
-  width: 105px;
+  width: 92px;
 
   z-index: 50;
 
@@ -545,8 +541,8 @@ body {
 #deck {
   position: relative;
 
-  width: 78px;
-  height: 111px;
+  width: 70px;
+  height: 102px;
 
   margin: auto;
 
@@ -563,10 +559,10 @@ body {
 .deckLayer {
   position: absolute;
 
-  width: 74px;
-  height: 107px;
+  width: 67px;
+  height: 98px;
 
-  border-radius: 8px;
+  border-radius: 7px;
 
   border: 1px solid #ddd;
 
@@ -574,13 +570,13 @@ body {
 }
 
 .deckLayer.one {
-  left: -6px;
-  top: 6px;
+  left: -5px;
+  top: 5px;
 }
 
 .deckLayer.two {
-  left: -3px;
-  top: 3px;
+  left: -2px;
+  top: 2px;
 }
 
 #deckBack {
@@ -589,10 +585,10 @@ body {
   left: 0;
   top: 0;
 
-  width: 74px;
-  height: 107px;
+  width: 67px;
+  height: 98px;
 
-  border-radius: 8px;
+  border-radius: 7px;
 
   border: 5px solid white;
 
@@ -634,16 +630,16 @@ body {
 }
 
 #deckCount {
-  margin-top: 7px;
+  margin-top: 5px;
 
-  font-size: 12px;
+  font-size: 11px;
   font-weight: bold;
 }
 
 #tapDeck {
-  margin-top: 2px;
+  margin-top: 1px;
 
-  font-size: 10px;
+  font-size: 9px;
 
   opacity: .75;
 }
@@ -661,11 +657,11 @@ body {
 #discardArea {
   position: absolute;
 
-  right: 52px;
-  bottom: 32px;
+  right: 34px;
+  bottom: 29px;
 
-  width: 92px;
-  height: 132px;
+  width: 82px;
+  height: 116px;
 
   z-index: 45;
 }
@@ -673,8 +669,8 @@ body {
 #discardPile {
   position: relative;
 
-  width: 70px;
-  height: 102px;
+  width: 68px;
+  height: 92px;
 
   margin: auto;
 }
@@ -682,7 +678,11 @@ body {
 .discardPlaceholder {
   position: absolute;
 
-  inset: 0;
+  left: 5px;
+  top: 3px;
+
+  width: 58px;
+  height: 84px;
 
   border:
     2px dashed
@@ -694,7 +694,11 @@ body {
 #discardVisual {
   position: absolute;
 
-  inset: 0;
+  left: 5px;
+  top: 3px;
+
+  width: 58px;
+  height: 84px;
 
   display: none;
 
@@ -739,7 +743,7 @@ body {
   border-radius: 7px;
 
   transform:
-    translate(-7px, 4px)
+    translate(-6px, 3px)
     rotate(-15deg);
 
   box-shadow:
@@ -768,7 +772,7 @@ body {
   border-radius: 7px;
 
   transform:
-    translate(6px, 5px)
+    translate(5px, 4px)
     rotate(11deg);
 
   box-shadow:
@@ -778,9 +782,9 @@ body {
 }
 
 #discardLabel {
-  margin-top: 6px;
+  margin-top: 5px;
 
-  font-size: 10px;
+  font-size: 9px;
 
   opacity: .75;
 }
@@ -790,27 +794,20 @@ body {
 /* ===================================== */
 
 #controls {
-  position: absolute;
-
-  left: 39px;
-  bottom: 30px;
-
-  display: flex;
-  flex-direction: column;
-
-  gap: 7px;
-
-  z-index: 60;
+  position: static;
 }
 
 button {
+  width: 108px;
+  height: 34px;
+
   border: 0;
 
-  border-radius: 9px;
+  border-radius: 8px;
 
-  padding: 10px 14px;
+  padding: 0 5px;
 
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 700;
 
   cursor: pointer;
@@ -820,12 +817,35 @@ button {
 }
 
 #discardButton {
+  position: absolute;
+
+  left: 50%;
+  top: 238px;
+
+  transform:
+    translateX(-50%);
+
+  z-index: 70;
+
   background: #e7ba36;
 
   color: #201807;
 }
 
+#discardButton:active {
+  transform:
+    translateX(-50%)
+    translateY(2px);
+}
+
 #newGameButton {
+  position: absolute;
+
+  left: 34px;
+  bottom: 42px;
+
+  z-index: 60;
+
   background: #f1f1f1;
 
   color: #202020;
@@ -842,18 +862,18 @@ button:active {
 #instructions {
   position: absolute;
 
-  left: 38px;
-  bottom: 146px;
+  left: 34px;
+  bottom: 100px;
 
-  width: 140px;
+  width: 125px;
 
   text-align: left;
 
-  font-size: 10px;
+  font-size: 9px;
   line-height: 1.25;
 
   color:
-    rgba(255,255,255,.72);
+    rgba(255,255,255,.7);
 }
 
 /* ===================================== */
@@ -921,13 +941,11 @@ button:active {
 }
 
 #playAgainButton {
+  position: static;
+
   background: #f0c63c;
 
   color: #1b1607;
-
-  font-size: 15px;
-
-  padding: 12px 20px;
 }
 
 @keyframes winPop {
@@ -991,106 +1009,240 @@ button:active {
 @media (max-width: 600px) {
 
   #game {
-    padding-left: 4px;
-    padding-right: 4px;
+    padding:
+      max(4px, env(safe-area-inset-top))
+      3px
+      max(8px, env(safe-area-inset-bottom));
   }
 
   #title {
-    font-size: 36px;
+    margin: 0;
 
-    letter-spacing: 8px;
+    font-size: 31px;
+
+    line-height: 34px;
+
+    letter-spacing: 7px;
   }
 
   #stats {
-    gap: 12px;
+    gap: 9px;
 
-    font-size: 12px;
+    margin: 0;
+
+    font-size: 11px;
   }
 
   #stats strong {
-    font-size: 13px;
+    font-size: 12px;
   }
 
   #message {
-    font-size: 13px;
+    height: 20px;
+
+    margin: 0;
+
+    font-size: 11px;
   }
 
   #tableOuter {
-    padding: 7px;
+    margin-top: 1px;
 
-    border-radius: 48px;
+    padding: 5px;
+
+    border-width: 2px;
+
+    border-radius: 40px;
   }
 
   #tableRail {
-    padding: 5px;
+    padding: 4px;
 
-    border-radius: 42px;
+    border-radius: 34px;
   }
 
   #tableFelt {
-    height: 500px;
+    height: 490px;
 
-    border-radius: 37px;
+    border-radius: 30px;
   }
 
   #tableFelt::before {
     inset: 10px;
 
-    border-radius: 29px;
+    border-radius: 22px;
   }
 
+  #feltLogo {
+    top: 51%;
+
+    font-size: 38px;
+
+    letter-spacing: 9px;
+  }
+
+  /*
+    Extra horizontal inset keeps rotated
+    cards inside the white felt line.
+  */
+
   #handArea {
-    left: 8px;
-    right: 8px;
-    top: 13px;
+    left: 18px;
+    right: 18px;
+    top: 9px;
+
+    height: 183px;
+  }
+
+  #playArea {
+    height: 175px;
   }
 
   .playingCard {
-    width: 66px;
-    height: 97px;
+    width: 59px;
+    height: 87px;
+
+    border-radius: 6px;
   }
 
   .dealCard {
-    width: 66px;
-    height: 97px;
+    width: 59px;
+    height: 87px;
+  }
+
+  .cardCorner {
+    top: 4px;
+    left: 3px;
+
+    width: 20px;
+  }
+
+  .bottomCorner {
+    right: 3px;
+    bottom: 4px;
+
+    width: 20px;
   }
 
   .cardRank {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .cardSuit {
-    font-size: 15px;
+    margin-top: 4px;
+
+    font-size: 14px;
   }
 
   .centerSuit {
-    font-size: 29px;
+    font-size: 26px;
   }
 
-  #controls {
-    left: 20px;
-    bottom: 27px;
+  .playingCard.selected {
+    --lift: -21px;
   }
 
-  #instructions {
-    left: 20px;
-    bottom: 140px;
+  #buriedStack {
+    left: 0;
+    top: 56px;
 
-    width: 105px;
+    width: 50px;
   }
 
-  #discardArea {
-    right: 20px;
-    bottom: 26px;
+  .buriedCard {
+    width: 46px;
+    height: 69px;
   }
 
-  #deckArea {
-    bottom: 24px;
+  #buriedCount {
+    min-width: 24px;
+    height: 24px;
+
+    padding: 4px;
+
+    font-size: 10px;
+  }
+
+  #buriedLabel {
+    top: 74px;
+
+    width: 60px;
+
+    font-size: 8px;
   }
 
   button {
-    font-size: 12px;
+    width: 96px;
+    height: 31px;
 
-    padding: 9px 10px;
+    font-size: 10px;
+  }
+
+  #discardButton {
+    top: 190px;
+  }
+
+  #newGameButton {
+    left: 18px;
+    bottom: 30px;
+  }
+
+  #instructions {
+    left: 18px;
+    bottom: 84px;
+
+    width: 96px;
+
+    font-size: 8px;
+  }
+
+  #deckArea {
+    bottom: 16px;
+
+    width: 78px;
+  }
+
+  #deck {
+    width: 62px;
+    height: 90px;
+  }
+
+  .deckLayer,
+  #deckBack {
+    width: 60px;
+    height: 87px;
+  }
+
+  #deckCount {
+    margin-top: 3px;
+
+    font-size: 10px;
+  }
+
+  #tapDeck {
+    font-size: 8px;
+  }
+
+  #discardArea {
+    right: 14px;
+    bottom: 22px;
+
+    width: 72px;
+    height: 100px;
+  }
+
+  #discardPile {
+    width: 62px;
+    height: 79px;
+  }
+
+  .discardPlaceholder,
+  #discardVisual {
+    width: 50px;
+    height: 73px;
+  }
+
+  #discardLabel {
+    font-size: 8px;
   }
 }
