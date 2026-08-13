@@ -232,21 +232,31 @@ body {
   right: 32px;
 }
 
+/* ===================================== */
+/* SUBTLE FLIP LOGO                      */
+/* ===================================== */
+
 #feltLogo {
   position: absolute;
 
   left: 50%;
-  top: 53%;
+  top: 21px;
 
   transform:
-    translate(-50%, -50%);
+    translateX(-50%);
 
-  font-size: 50px;
-  letter-spacing: 15px;
+  z-index: 140;
+
+  font-size: 16px;
+  letter-spacing: 5px;
   font-weight: 800;
 
   color:
-    rgba(255,255,255,.035);
+    rgba(255,255,255,.18);
+
+  text-shadow:
+    0 2px 3px
+    rgba(0,0,0,.25);
 
   pointer-events: none;
 }
@@ -1053,18 +1063,20 @@ button:active {
     right: 21px;
   }
 
-  #feltLogo {
-    top: 55%;
-
-    font-size: 38px;
-
-    letter-spacing: 9px;
-  }
-
   /*
-    The cards are shifted downward
-    while leaving room for Games/Wins.
+    Small FLIP mark now sits between
+    Games and Wins at the top.
   */
+
+  #feltLogo {
+    top: 17px;
+
+    font-size: 12px;
+    letter-spacing: 3px;
+
+    color:
+      rgba(255,255,255,.20);
+  }
 
   #handArea {
     left: 18px;
@@ -1152,19 +1164,45 @@ button:active {
   }
 
   /*
-    Cards -> modest gap -> discard button
-    -> similar gap -> draw pile.
+    DISCARD SELECTED:
+    31px -> 47px tall.
+    This is roughly 50% taller and gives
+    your thumb a much larger target.
   */
 
   #discardButton {
-    top: 218px;
+    top: 214px;
+
+    width: 116px;
+    height: 47px;
+
+    border-radius: 10px;
+
+    font-size: 11px;
   }
+
+  /*
+    Other buttons stay at their
+    existing smaller size.
+  */
 
   button {
     width: 96px;
     height: 31px;
 
     font-size: 10px;
+  }
+
+  /*
+    Re-override discard after the generic
+    phone button rule above.
+  */
+
+  #discardButton {
+    width: 116px;
+    height: 47px;
+
+    font-size: 11px;
   }
 
   #deckArea {
