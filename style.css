@@ -1336,3 +1336,12 @@ button:active {
   }
 
 }
+/* Final phone discard button position */
+
+@media (max-width: 600px) {
+
+  #discardButton {
+    top: 234px;
+  }
+
+}
