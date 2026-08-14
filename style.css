@@ -1356,3 +1356,24 @@ button:active {
   }
 
 }
+/* ===================================== */
+/* FINAL UNDO BUTTON POSITION            */
+/* ===================================== */
+
+/* Desktop */
+#undoButton {
+  left: 34px;
+  bottom: 134px;
+  width: 96px;
+}
+
+/* Phone */
+@media (max-width: 600px) {
+
+  #undoButton {
+    left: 18px;
+    bottom: 116px;
+    width: 96px;
+  }
+
+}
