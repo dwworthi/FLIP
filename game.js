@@ -1,24 +1,8 @@
-const suits = [
-  "♠",
-  "♥",
-  "♦",
-  "♣"
-];
+const suits = ["♠", "♥", "♦", "♣"];
 
 const ranks = [
-  "A",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-  "10",
-  "J",
-  "Q",
-  "K"
+  "A", "2", "3", "4", "5", "6", "7",
+  "8", "9", "10", "J", "Q", "K"
 ];
 
 let deck = [];
@@ -46,6 +30,7 @@ let winsPlayed =
 
 let currentGameCounted = false;
 let currentGameWon = false;
+let lastDiscard = null;
 
 /* ===================================== */
 /* DRAG STATE                            */
@@ -154,8 +139,11 @@ function newGame() {
 
   currentGameCounted = false;
   currentGameWon = false;
+  lastDiscard = null;
 
   dragVisited.clear();
+
+  updateUndoButton();
 
   for (
     let suit of suits
@@ -804,7 +792,8 @@ function discardSelected() {
       animateDiscard(
         [...selectedIndexes],
         "ROYAL VICTORY!",
-        winGame
+        winGame,
+        false
       );
 
       return;
@@ -916,7 +905,8 @@ function invalidMove() {
 function animateDiscard(
   indexes,
   message,
-  afterDiscard
+  afterDiscard,
+  canUndo = true
 ) {
 
   isAnimating = true;
@@ -958,6 +948,29 @@ function animateDiscard(
             faceUpCards[index]
         );
 
+      if (
+        canUndo
+      ) {
+
+        lastDiscard = {
+          cards:
+            indexes.map(
+              (index, position) => ({
+                index: index,
+                card: cardsBeingDiscarded[position]
+              })
+            ),
+          count: indexes.length
+        };
+
+      }
+
+      else {
+
+        lastDiscard = null;
+
+      }
+
       discardedCards.push(
         ...cardsBeingDiscarded
       );
@@ -998,6 +1011,8 @@ function animateDiscard(
 
       isAnimating = false;
 
+      updateUndoButton();
+
       if (
         afterDiscard
       ) {
@@ -1013,6 +1028,80 @@ function animateDiscard(
     },
     280
   );
+
+}
+
+/* ===================================== */
+/* UNDO LAST DISCARD                     */
+/* ===================================== */
+
+function updateUndoButton() {
+
+  const undoButton =
+    document.getElementById(
+      "undoButton"
+    );
+
+  if (
+    undoButton
+  ) {
+
+    undoButton.disabled =
+      lastDiscard === null;
+
+  }
+
+}
+
+function undoLastDiscard() {
+
+  if (
+    isAnimating ||
+    !lastDiscard
+  ) {
+
+    return;
+
+  }
+
+  const cardsToRestore =
+    [...lastDiscard.cards].sort(
+      (a,b) =>
+        a.index - b.index
+    );
+
+  cardsToRestore.forEach(
+    function(entry) {
+
+      faceUpCards.splice(
+        entry.index,
+        0,
+        entry.card
+      );
+
+    }
+  );
+
+  discardedCards.splice(
+    -lastDiscard.count,
+    lastDiscard.count
+  );
+
+  discardedCount -=
+    lastDiscard.count;
+
+  lastDiscard = null;
+  selectedIndexes = [];
+  showAllCards = false;
+
+  showMessage(
+    "Last discard undone."
+  );
+
+  updateStats();
+  renderCards();
+  renderDiscardPile();
+  updateUndoButton();
 
 }
 
@@ -1965,7 +2054,7 @@ document
 
       if (
         event.target.closest(
-          ".playingCard, #deckArea, #discardButton, #newGameButton, #buriedStack, #discardArea, #winOverlay"
+          ".playingCard, #deckArea, #discardButton, #newGameButton, #undoButton, #buriedStack, #discardArea, #winOverlay"
         )
       ) {
 
@@ -2018,6 +2107,15 @@ document
   .addEventListener(
     "click",
     newGame
+  );
+
+document
+  .getElementById(
+    "undoButton"
+  )
+  .addEventListener(
+    "click",
+    undoLastDiscard
   );
 
 document
