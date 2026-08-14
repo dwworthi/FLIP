@@ -30,7 +30,7 @@ let winsPlayed =
 
 let currentGameCounted = false;
 let currentGameWon = false;
-let lastDiscard = null;
+let discardHistory = [];
 
 /* ===================================== */
 /* DRAG STATE                            */
@@ -139,7 +139,7 @@ function newGame() {
 
   currentGameCounted = false;
   currentGameWon = false;
-  lastDiscard = null;
+  discardHistory = [];
 
   dragVisited.clear();
 
@@ -952,7 +952,7 @@ function animateDiscard(
         canUndo
       ) {
 
-        lastDiscard = {
+        discardHistory.push({
           cards:
             indexes.map(
               (index, position) => ({
@@ -961,13 +961,13 @@ function animateDiscard(
               })
             ),
           count: indexes.length
-        };
+        });
 
       }
 
       else {
 
-        lastDiscard = null;
+        discardHistory = [];
 
       }
 
@@ -1032,7 +1032,7 @@ function animateDiscard(
 }
 
 /* ===================================== */
-/* UNDO LAST DISCARD                     */
+/* UNDO DISCARDS                         */
 /* ===================================== */
 
 function updateUndoButton() {
@@ -1047,7 +1047,7 @@ function updateUndoButton() {
   ) {
 
     undoButton.disabled =
-      lastDiscard === null;
+      discardHistory.length === 0;
 
   }
 
@@ -1057,15 +1057,18 @@ function undoLastDiscard() {
 
   if (
     isAnimating ||
-    !lastDiscard
+    discardHistory.length === 0
   ) {
 
     return;
 
   }
 
+  const discardToUndo =
+    discardHistory.pop();
+
   const cardsToRestore =
-    [...lastDiscard.cards].sort(
+    [...discardToUndo.cards].sort(
       (a,b) =>
         a.index - b.index
     );
@@ -1083,14 +1086,13 @@ function undoLastDiscard() {
   );
 
   discardedCards.splice(
-    -lastDiscard.count,
-    lastDiscard.count
+    -discardToUndo.count,
+    discardToUndo.count
   );
 
   discardedCount -=
-    lastDiscard.count;
+    discardToUndo.count;
 
-  lastDiscard = null;
   selectedIndexes = [];
   showAllCards = false;
 
@@ -1623,14 +1625,20 @@ function getLayoutInfo() {
 
   const maxVisible =
     phone
-    ? 7
+    ? 15
     : 11;
+
+  const frontRowCapacity =
+    phone
+    ? 7
+    : maxVisible;
 
   return {
     width,
     cardWidth,
     minimumSpacing,
-    maxVisible
+    maxVisible,
+    frontRowCapacity
   };
 
 }
@@ -1699,51 +1707,6 @@ function renderCards() {
       startIndex
     );
 
-  let spacing;
-
-  if (
-    showAllCards
-  ) {
-
-    spacing =
-      Math.max(
-        8,
-        (
-          layout.width -
-          layout.cardWidth -
-          16
-        )
-        /
-        Math.max(
-          count - 1,
-          1
-        )
-      );
-
-  }
-
-  else {
-
-    spacing =
-      Math.min(
-        phoneSpacingLimit(),
-        Math.max(
-          layout.minimumSpacing,
-          (
-            layout.width -
-            layout.cardWidth -
-            24
-          )
-          /
-          Math.max(
-            visible.length - 1,
-            1
-          )
-        )
-      );
-
-  }
-
   const leftMargin =
     hiddenCount > 0 &&
     !showAllCards
@@ -1759,24 +1722,82 @@ function renderCards() {
     leftMargin -
     7;
 
-  const totalWidth =
-    layout.cardWidth +
-    spacing *
-    Math.max(
-      visible.length - 1,
-      0
+  const phoneTwoRows =
+    window.innerWidth <= 600 &&
+    !showAllCards &&
+    visible.length >
+    layout.frontRowCapacity;
+
+  const backRowCount =
+    phoneTwoRows
+    ? visible.length -
+      layout.frontRowCapacity
+    : 0;
+
+  function getRowSpacing(
+    rowLength
+  ) {
+
+    if (
+      showAllCards
+    ) {
+
+      return Math.max(
+        8,
+        (
+          layout.width -
+          layout.cardWidth -
+          16
+        ) /
+        Math.max(
+          rowLength - 1,
+          1
+        )
+      );
+
+    }
+
+    return Math.min(
+      phoneSpacingLimit(),
+      Math.max(
+        layout.minimumSpacing,
+        (
+          usableWidth -
+          layout.cardWidth -
+          10
+        ) /
+        Math.max(
+          rowLength - 1,
+          1
+        )
+      )
     );
 
-  const startX =
-    leftMargin +
-    Math.max(
-      0,
-      (
-        usableWidth -
-        totalWidth
-      )
-      / 2
-    );
+  }
+
+  function getRowStartX(
+    rowLength,
+    rowSpacing
+  ) {
+
+    const rowWidth =
+      layout.cardWidth +
+      rowSpacing *
+      Math.max(
+        rowLength - 1,
+        0
+      );
+
+    return leftMargin +
+      Math.max(
+        0,
+        (
+          usableWidth -
+          rowWidth
+        ) / 2
+      );
+
+  }
 
   visible.forEach(
     function(
@@ -1788,6 +1809,37 @@ function renderCards() {
         startIndex +
         visibleIndex;
 
+      const isBackRow =
+        phoneTwoRows &&
+        visibleIndex <
+        backRowCount;
+
+      const rowIndex =
+        isBackRow
+        ? visibleIndex
+        : phoneTwoRows
+          ? visibleIndex -
+            backRowCount
+          : visibleIndex;
+
+      const rowLength =
+        isBackRow
+        ? backRowCount
+        : phoneTwoRows
+          ? layout.frontRowCapacity
+          : visible.length;
+
+      const rowSpacing =
+        getRowSpacing(
+          rowLength
+        );
+
+      const rowStartX =
+        getRowStartX(
+          rowLength,
+          rowSpacing
+        );
+
       const cardDiv =
         document.createElement(
           "div"
@@ -1798,6 +1850,18 @@ function renderCards() {
 
       cardDiv.dataset.index =
         actualIndex;
+
+      if (
+        phoneTwoRows
+      ) {
+
+        cardDiv.classList.add(
+          isBackRow
+          ? "backRow"
+          : "frontRow"
+        );
+
+      }
 
       if (
         card.suit === "♥" ||
@@ -1824,22 +1888,22 @@ function renderCards() {
 
       cardDiv.style.left =
         (
-          startX +
-          visibleIndex *
-          spacing
+          rowStartX +
+          rowIndex *
+          rowSpacing
         )
         + "px";
 
       const middle =
         (
-          visible.length -
+          rowLength -
           1
         )
         / 2;
 
       const distance =
         Math.abs(
-          visibleIndex -
+          rowIndex -
           middle
         )
         /
@@ -1851,14 +1915,20 @@ function renderCards() {
       const curve =
         distance *
         (
-          window.innerWidth <= 600
+          phoneTwoRows
+          ? 7
+          : window.innerWidth <= 600
           ? 10
           : 17
         );
 
       cardDiv.style.top =
         (
-          window.innerWidth <= 600
+          phoneTwoRows
+          ? isBackRow
+            ? 6
+            : 54
+          : window.innerWidth <= 600
           ? 45
           : 56
         )
@@ -1867,12 +1937,12 @@ function renderCards() {
         + "px";
 
       const rotation =
-        visible.length === 1
+        rowLength === 1
         ? 0
         :
         (
           (
-            visibleIndex -
+            rowIndex -
             middle
           )
           /
@@ -1895,8 +1965,14 @@ function renderCards() {
       );
 
       cardDiv.style.zIndex =
-        100 +
-        visibleIndex;
+        (
+          isBackRow
+          ? 100
+          : phoneTwoRows
+            ? 300
+            : 100
+        ) +
+        rowIndex;
 
       cardDiv.appendChild(
         createCorner(
