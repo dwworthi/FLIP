@@ -1356,6 +1356,7 @@ button:active {
   }
 
 }
+
 /* ===================================== */
 /* FINAL UNDO BUTTON POSITION            */
 /* ===================================== */
@@ -1374,6 +1375,28 @@ button:active {
     left: 18px;
     bottom: 116px;
     width: 96px;
+  }
+
+}
+
+/* ===================================== */
+/* FINAL TWO-ROW PHONE HAND              */
+/* ===================================== */
+
+@media (max-width: 600px) {
+
+  .playingCard.backRow {
+    filter: brightness(.94);
+  }
+
+  .playingCard.backRow.selected {
+    --lift: -6px;
+    z-index: 600 !important;
+    filter: brightness(1);
+  }
+
+  .playingCard.frontRow {
+    filter: brightness(1);
   }
 
 }
