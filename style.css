@@ -1063,11 +1063,6 @@ button:active {
     right: 21px;
   }
 
-  /*
-    Small FLIP mark now sits between
-    Games and Wins at the top.
-  */
-
   #feltLogo {
     top: 17px;
 
@@ -1163,13 +1158,6 @@ button:active {
     font-size: 8px;
   }
 
-  /*
-    DISCARD SELECTED:
-    31px -> 47px tall.
-    This is roughly 50% taller and gives
-    your thumb a much larger target.
-  */
-
   #discardButton {
     top: 214px;
 
@@ -1181,22 +1169,12 @@ button:active {
     font-size: 11px;
   }
 
-  /*
-    Other buttons stay at their
-    existing smaller size.
-  */
-
   button {
     width: 96px;
     height: 31px;
 
     font-size: 10px;
   }
-
-  /*
-    Re-override discard after the generic
-    phone button rule above.
-  */
 
   #discardButton {
     width: 116px;
@@ -1267,12 +1245,13 @@ button:active {
   #discardLabel {
     font-size: 8px;
   }
+
 }
+
 /* ===================================== */
 /* FINAL DISCARD BUTTON OVERRIDES        */
 /* ===================================== */
 
-/* Desktop / laptop */
 #discardButton {
   top: 254px;
   width: 108px;
@@ -1280,7 +1259,6 @@ button:active {
   font-size: 11px;
 }
 
-/* Phone only */
 @media (max-width: 600px) {
 
   #discardButton {
@@ -1290,11 +1268,10 @@ button:active {
     font-size: 11px;
     border-radius: 10px;
   }
-/* ===================================== */
-/* FINAL PHONE CARD SIZE                 */
-/* ===================================== */
 
-@media (max-width: 600px) {
+  /* =================================== */
+  /* FINAL PHONE CARD SIZE               */
+  /* =================================== */
 
   .playingCard {
     width: 76px !important;
@@ -1335,13 +1312,47 @@ button:active {
     font-size: 37px !important;
   }
 
+  #discardButton {
+    top: 234px;
+  }
+
 }
-/* Final phone discard button position */
+
+/* ===================================== */
+/* UNDO BUTTON                           */
+/* ===================================== */
+
+#undoButton {
+  position: absolute;
+  left: 150px;
+  bottom: 42px;
+  z-index: 60;
+
+  width: 72px;
+
+  background: #d8d8d8;
+  color: #202020;
+}
+
+#undoButton:disabled {
+  opacity: .38;
+  cursor: default;
+}
+
+#undoButton:disabled:active {
+  transform: none;
+}
 
 @media (max-width: 600px) {
 
-  #discardButton {
-    top: 234px;
+  #newGameButton {
+    width: 76px;
+  }
+
+  #undoButton {
+    left: 98px;
+    bottom: 31px;
+    width: 55px;
   }
 
 }
