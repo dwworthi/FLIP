@@ -582,6 +582,102 @@ function endDrag() {
 /* DISCARD RULES                         */
 /* ===================================== */
 
+function isOrderedRun(
+  cards
+) {
+
+  const rankValues = {
+    "A": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+    "6": 6,
+    "7": 7,
+    "8": 8,
+    "9": 9,
+    "10": 10,
+    "J": 11,
+    "Q": 12,
+    "K": 13
+  };
+
+  const lowAceValues =
+    cards.map(
+      card =>
+        rankValues[card.rank]
+    );
+
+  const highAceValues =
+    cards.map(
+      card =>
+        card.rank === "A"
+        ? 14
+        : rankValues[card.rank]
+    );
+
+  function movesOneStep(
+    values
+  ) {
+
+    const step =
+      values[1] -
+      values[0];
+
+    if (
+      step !== 1 &&
+      step !== -1
+    ) {
+
+      return false;
+
+    }
+
+    return values.every(
+      function(
+        value,
+        index
+      ) {
+
+        return (
+          index === 0 ||
+          value -
+          values[index - 1] ===
+          step
+        );
+
+      }
+    );
+
+  }
+
+  return (
+    movesOneStep(
+      lowAceValues
+    ) ||
+    movesOneStep(
+      highAceValues
+    )
+  );
+
+}
+
+function isRoyalRun(
+  cards
+) {
+
+  const ranksInOrder =
+    cards
+      .map(card => card.rank)
+      .join(",");
+
+  return (
+    ranksInOrder === "J,Q,K,A" ||
+    ranksInOrder === "A,K,Q,J"
+  );
+
+}
+
 function discardSelected() {
 
   if (
@@ -680,6 +776,83 @@ function discardSelected() {
       return;
     }
 
+    const selectedCards =
+      selectedIndexes.map(
+        index =>
+          faceUpCards[index]
+      );
+
+    const allSameSuit =
+      selectedCards.every(
+        card =>
+          card.suit ===
+          selectedCards[0].suit
+      );
+
+    const orderedRun =
+      isOrderedRun(
+        selectedCards
+      );
+
+    if (
+      allSameSuit &&
+      isRoyalRun(
+        selectedCards
+      )
+    ) {
+
+      animateDiscard(
+        [...selectedIndexes],
+        "ROYAL VICTORY!",
+        winGame
+      );
+
+      return;
+    }
+
+    if (
+      allSameSuit &&
+      orderedRun
+    ) {
+
+      const allFaceUpIndexes =
+        faceUpCards.map(
+          (card, index) =>
+            index
+        );
+
+      animateDiscard(
+        allFaceUpIndexes,
+        "MEGA RUN — every card in play discarded!"
+      );
+
+      return;
+    }
+
+    if (
+      allSameSuit
+    ) {
+
+      animateDiscard(
+        [...selectedIndexes],
+        "Four of one suit — all four discarded!"
+      );
+
+      return;
+    }
+
+    if (
+      orderedRun
+    ) {
+
+      animateDiscard(
+        [...selectedIndexes],
+        "Four-card run — all four discarded!"
+      );
+
+      return;
+    }
+
     if (
       faceUpCards[a].rank ===
       faceUpCards[d].rank
@@ -742,7 +915,8 @@ function invalidMove() {
 
 function animateDiscard(
   indexes,
-  message
+  message,
+  afterDiscard
 ) {
 
   isAnimating = true;
@@ -823,6 +997,16 @@ function animateDiscard(
       renderDiscardPile();
 
       isAnimating = false;
+
+      if (
+        afterDiscard
+      ) {
+
+        afterDiscard();
+
+        return;
+
+      }
 
       checkForWin();
 
